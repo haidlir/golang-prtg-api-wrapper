@@ -9,6 +9,7 @@ import (
 	"testing"
 	"os"
 	"path/filepath"
+	"time"
 )
 
 func TestNewClient(t *testing.T) {
@@ -117,5 +118,53 @@ func TestGetPrtgVersion(t *testing.T) {
 	}
 	if prtgVersion != "18.2.41.1636" {
 		t.Errorf("PRTG Version is %v instead of 18.2.41.1636", client.server)
+	}
+}
+
+func TestGetSensorDetail(t *testing.T) {
+	mux := new(http.ServeMux)
+	mux.HandleFunc(GetSensorDetailsEndpoint, func(w http.ResponseWriter, r *http.Request) {
+		sensorId := r.FormValue("id")
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		if sensorId == "9182" {
+			fmt.Fprint(w, loadfixture("/prtg_sensor_9182.json"))
+		} else if sensorId == "9321" {
+			fmt.Fprint(w, loadfixture("/prtg_sensor_9321.json"))
+		} else if sensorId == "1337" {
+			time.Sleep(10001 * time.Millisecond)
+			fmt.Fprint(w, "")
+		}
+	})
+	httpServer := setup(mux)
+	defer httpServer.Close()
+	serverURL, _ := url.Parse(httpServer.URL)
+
+	server := fmt.Sprintf("%v", serverURL)
+	username := "user"
+	password := "pass"
+	var sensorId int64
+	client := NewClient(server, username, password)
+
+	// for sensor id 9182
+	sensorId = 9182
+	sensorDetail, err := client.GetSensorDetail(sensorId)
+	if err != nil {
+		t.Errorf("Unable to get PRTG's Sensor Detail: %v", err)
+		return
+	}
+	if sensorDetail.Name != "NetFlow V5 1" {
+		t.Errorf("Sensor's name %v instead of NetFlow V5 1", client.server)
+	}
+
+	// for sensor id 9322
+	sensorId = 9322
+	sensorDetail, err = client.GetSensorDetail(sensorId)
+	if err != nil {
+		t.Errorf("Unable to get PRTG's Sensor Detail: %v", err)
+		return
+	}
+	if sensorDetail.Name != "Ping" {
+		t.Errorf("Sensor's name %v instead of Ping", client.server)
 	}
 }

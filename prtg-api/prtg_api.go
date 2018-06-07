@@ -28,7 +28,7 @@ type Client interface {
 	GetPrtgVersion() (string, error)
 
 	// Get details of specific PRTG's sensor
-	// GetSensorDetail(id int64) (*Sensor, error)
+	GetSensorDetail(id int64) (*PrtgSensorData, error)
 	
 	// Get records of data from specific sensor
 	// The reponse's format depends on the sensor's type
@@ -87,14 +87,14 @@ func (c *client) SetContextTimeout(timeout int64) {
 	}
 }
 
-func getTemplateUrlQuery(c *client) (*url.Values) {
+func (c *client) getTemplateUrlQuery() (*url.Values) {
 	q := url.Values{}
 	q.Set("username", c.username)
 	q.Set("password", c.password)
 	return &q
 }
 
-func getCompleteUrl(c *client, p string, q *url.Values) (string, error) {
+func (c *client) getCompleteUrl(p string, q *url.Values) (string, error) {
 	u, err := url.Parse(c.server)
 	if err != nil {
 		return "", fmt.Errorf("Unable to parse url: %v", err)
@@ -104,24 +104,32 @@ func getCompleteUrl(c *client, p string, q *url.Values) (string, error) {
 	return u.String(), nil
 }
 
+func (c *client) getSensorDetail(q *url.Values) (*PrtgSensorDetailsResponse, error) {
+	p := GetSensorDetailsEndpoint
+
+	// Complete URL
+	u, err := c.getCompleteUrl(p, q)
+	if err != nil {
+		return nil, err
+	}
+
+	sensorDetail, err := getSensorDetail(u, c.timeout)
+	if err != nil {
+		return nil, err
+	}
+	return sensorDetail, nil
+}
+
+
 // Get PRTG's version.
 // Take nothing as input.
 // Return PRTG's version in string.
 func (c *client) GetPrtgVersion() (string, error) {
 	// Set the query
-	q := getTemplateUrlQuery(c)
+	q := c.getTemplateUrlQuery()
 	q.Set("id", "0")
 
-	// Set the path endpoint of prtg version
-	p := GetSensorDetailsEndpoint
-
-	// Complete URL
-	u, err := getCompleteUrl(c, p, q)
-	if err != nil {
-		return "", err
-	}
-
-	sensorDetail, err := getSensorDetail(u, c.timeout)
+	sensorDetail, err := c.getSensorDetail(q)
 	if err != nil {
 		return "", err
 	}
@@ -131,5 +139,15 @@ func (c *client) GetPrtgVersion() (string, error) {
 // Get details for specific sensor.
 // Take sensor's id as input.
 // Return sensor structure.
-// func (c * client) GetSensorList(id int64)
+func (c * client) GetSensorDetail(id int64) (*PrtgSensorData, error) {
+	// Set the query
+	q := c.getTemplateUrlQuery()
+	q.Set("id", fmt.Sprintf("%v", id))
+
+	sensorDetail, err := c.getSensorDetail(q)
+	if err != nil {
+		return nil, err
+	}
+	return &sensorDetail.SensorData, nil
+}
 
