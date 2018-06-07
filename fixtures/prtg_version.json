@@ -1,0 +1,27 @@
+{
+    "prtgversion":  "18.2.41.1636",
+    "sensordata": {
+        "name":             "Root (The Demo Site Is Being Redesigned, Please Excuse The Paused Sensors)",
+        "sensortype":       "group",
+        "interval":         "",
+        "probename":        "",
+        "parentgroupname":  "None",
+        "parentdevicename": "None",
+        "parentdeviceid":   "-1000",
+        "lastvalue":        "",
+        "lastmessage":      "OK",
+        "favorite":         "false",
+        "statustext":       "Up",
+        "statusid":         "3",
+        "lastup":           "",
+        "lastdown":         "",
+        "lastcheck":        "",
+        "uptime":           "",
+        "uptimetime":       "",
+        "downtime":         "",
+        "downtimetime":     "",
+        "updowntotal":      "",
+    "updownsince":  "",
+    "info":         "fixed isnotautodiscoverable"
+    }
+}
