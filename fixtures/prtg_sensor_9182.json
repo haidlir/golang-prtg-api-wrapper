@@ -1,0 +1,27 @@
+{
+    "prtgversion": "18.2.41.1636",
+    "sensordata": {
+        "name": "NetFlow V5 1",
+        "sensortype": "netflowheader",
+        "interval": "60",
+        "probename": "Ireland (EC2, Small Instance 2012r2)",
+        "parentgroupname": "Firewalls",
+        "parentdevicename": "Firewall",
+        "parentdeviceid": "9179",
+        "lastvalue": "-",
+        "lastmessage": "No data since 6/23/2017 9:55:00 AM",
+        "favorite": "false",
+        "statustext": "Unknown",
+        "statusid": "1",
+        "lastup": "42909.3298611111 [348 d ago]",
+        "lastdown": "-",
+        "lastcheck": "42909.3298611111 [348 d ago]",
+        "uptime": "100.0000%",
+        "uptimetime": "23 d",
+        "downtime": "0.0000%",
+        "downtimetime": "0 s",
+        "updowntotal": "23 d  [=6% coverage]",
+        "updownsince": "42885.4159722222 [372 d ago]",
+        "info": "remoteprobe"
+    }
+}

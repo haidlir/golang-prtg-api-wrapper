@@ -1,0 +1,27 @@
+{
+    "prtgversion": "18.2.41.1636",
+    "sensordata": {
+        "name": "Ping",
+        "sensortype": "ping",
+        "interval": "60",
+        "probename": "Ireland (EC2, Small Instance 2012r2)",
+        "parentgroupname": "Switches",
+        "parentdevicename": "HP Procurve 24",
+        "parentdeviceid": "9321",
+        "lastvalue": "-",
+        "lastmessage": "Paused by parent",
+        "favorite": "false",
+        "statustext": "Paused  (paused by parent)",
+        "statusid": "7",
+        "lastup": "42782.4447098380 [475 d ago]",
+        "lastdown": "-",
+        "lastcheck": "42782.4447098380 [475 d ago]",
+        "uptime": "100.0000%",
+        "uptimetime": "559 d",
+        "downtime": "0.0000%",
+        "downtimetime": "0 s",
+        "updowntotal": "559 d  [=54% coverage]",
+        "updownsince": "42222.3813060764 [1035 d ago]",
+        "info": "remoteprobe"
+    }
+}

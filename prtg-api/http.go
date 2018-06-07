@@ -56,3 +56,20 @@ func getSensorDetail(url string, timeout int64) (*PrtgSensorDetailsResponse, err
 	return &msg, nil
 
 }
+
+func getHistoricData(url string, timeout int64) (*PrtgHistoricDataResponse, error) {
+	body, err := getHTTPBody(url, timeout)
+	if err != nil {
+		return nil, err
+	}
+
+	// Unmarshal
+	var msg PrtgHistoricDataResponse
+	err = json.Unmarshal(body, &msg)
+	if err != nil {
+		return nil, fmt.Errorf("Unable to unmarshal json response: %v", err)
+	}
+
+	return &msg, nil
+
+}

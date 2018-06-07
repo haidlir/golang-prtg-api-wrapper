@@ -17,6 +17,6 @@ func main() {
 	if err != nil {
 		log.Println(err)
 	} else {
-		log.Println(prtgVersion)
+		log.Printf("The version of PRTG on %v is %v.", server, prtgVersion)
 	}
 }

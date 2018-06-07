@@ -3,6 +3,7 @@ package prtg
 import (
 	"fmt"
 	"net/url"
+	"time"
 )
 
 // Client's fields are read-only onece instantiated.
@@ -32,7 +33,7 @@ type Client interface {
 	
 	// Get records of data from specific sensor
 	// The reponse's format depends on the sensor's type
-	// GetHistoricData(id, average int64, startDate, endDate *time.Time) error
+	GetHistoricData(id, average int64, startDate, endDate *time.Time) ([]map[string]interface{}, error)
 
 	// Get all sensors under specific devices or groups
 	// GetSensorList(id int64, columns []string) error
@@ -57,6 +58,8 @@ type Client interface {
 var instance *client
 var (
 	defaultTimeout int64 = 10000
+	deltaHistoricThreshold int64 = 31 * 24 * 60 * 60 // 31 days
+	dateFormat string = "2006-01-02-15-04-05"
 )
 const (
 	GetSensorDetailsEndpoint = "/api/getsensordetails.json"
@@ -139,7 +142,7 @@ func (c *client) GetPrtgVersion() (string, error) {
 // Get details for specific sensor.
 // Take sensor's id as input.
 // Return sensor structure.
-func (c * client) GetSensorDetail(id int64) (*PrtgSensorData, error) {
+func (c *client) GetSensorDetail(id int64) (*PrtgSensorData, error) {
 	// Set the query
 	q := c.getTemplateUrlQuery()
 	q.Set("id", fmt.Sprintf("%v", id))
@@ -151,3 +154,52 @@ func (c * client) GetSensorDetail(id int64) (*PrtgSensorData, error) {
 	return &sensorDetail.SensorData, nil
 }
 
+func (c *client) getHistoricData(id, average int64, startDate, endDate time.Time) (*PrtgHistoricDataResponse, error) {
+	// Compose queries
+	q := c.getTemplateUrlQuery()
+	q.Set("id", fmt.Sprintf("%v", id))
+	q.Set("avg", fmt.Sprintf("%v", average))
+	q.Set("sDate", fmt.Sprintf("%v", startDate.Format(dateFormat)))
+	q.Set("eDate", fmt.Sprintf("%v", endDate.Format(dateFormat)))
+	q.Set("usecaption", fmt.Sprintf("%v", 1))
+	p := GetHistoricDatasEndpoint
+	// Complete URL
+	u, err := c.getCompleteUrl(p, q)
+	if err != nil {
+		return nil, err
+	}
+
+	histDataResp, err := getHistoricData(u, c.timeout)
+	if err != nil {
+		return nil, err
+	}
+	return histDataResp, nil
+}
+
+func getDeltaSecond(sDate, eDate time.Time) int64 {
+	return eDate.Unix() - sDate.Unix()
+}
+
+func (c *client) GetHistoricData(id, average int64, startDate, endDate time.Time) ([]PrtgHistoricData, error) {
+	// Validate Input
+	// Make sure that average is not less than 0
+	if id < 0 || average < 0{
+		return nil, fmt.Errorf("Id should be more than or equals to zero")
+	}
+	// Make sure that data range less than 31 days
+	if deltaSecond := getDeltaSecond(startDate, endDate); (deltaSecond < 0) || (deltaSecond > deltaHistoricThreshold) {
+		return nil, fmt.Errorf("Data range is more than 31 days")
+	}
+
+	// Get Historic Data using PRTG's API
+	histData, err := c.getHistoricData(id, average, startDate, endDate)
+	if err != nil {
+		return nil, fmt.Errorf("Unable to get historic data: %v", err)
+	}
+	if len(histData.HistoricData) <= 0 {
+		return histData.HistoricData, fmt.Errorf("No Data Found")
+	}
+
+	// Return the historic data
+	return histData.HistoricData, nil
+}
