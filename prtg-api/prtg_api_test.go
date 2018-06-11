@@ -82,7 +82,11 @@ func TestGetCompleteUrl(t *testing.T) {
 		_, err = client.GetHistoricData(sensorId, average, sDate, eDate)
 		if err == nil {
 			t.Errorf("It Should be error when server %v", client.server)
-			return
+		}
+
+		_, err = client.GetSensorList(sensorId, nil)
+		if err == nil {
+			t.Errorf("It Should be error when server %v", client.server)
 		}
 	}
 }
@@ -250,7 +254,7 @@ func TestHistData(t *testing.T) {
 	sensorId = -1
 	histData, err = client.GetHistoricData(sensorId, average, sDate, eDate)
 	if err == nil {
-		t.Errorf("Since the daverage is less than zero, an error should occur.")
+		t.Errorf("Since the id is less than zero, an error should occur.")
 	}
 
 	// Average should be more than or equals to zero
@@ -258,6 +262,78 @@ func TestHistData(t *testing.T) {
 	average = -1
 	histData, err = client.GetHistoricData(sensorId, average, sDate, eDate)
 	if err == nil {
-		t.Errorf("Since the daverage is less than zero, an error should occur.")
+		t.Errorf("Since the average is less than zero, an error should occur.")
+	}
+}
+
+func TestGetSensorList(t *testing.T) {
+	mux := new(http.ServeMux)
+	mux.HandleFunc(GetTableListsEndpoint, func(w http.ResponseWriter, r *http.Request) {
+		sensorId := r.FormValue("id")
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		if sensorId == "9301" {
+			fmt.Fprint(w, loadfixture("/prtg_sensor-list_9301.json"))
+		} else if sensorId == "9000" {
+			fmt.Fprint(w, loadfixture("/prtg_sensor-list_9000_empty.json"))
+		} else if sensorId == "9321" {
+			fmt.Fprint(w, loadfixture("/prtg_histdata_9321.xml"))
+		}
+	})
+	httpServer := setup(mux)
+	defer httpServer.Close()
+	serverURL, _ := url.Parse(httpServer.URL)
+
+	server := fmt.Sprintf("%v", serverURL)
+	username := "user"
+	password := "pass"
+	var sensorId int64
+	var columns []string
+	client := NewClient(server, username, password)
+
+	// Check sensor list within id 9301
+	sensorId = 9301
+	columns = []string{"objid","probe","group","device","sensor","status","message",
+												"lastvalue","priority","favorite"}
+	sensorList, err := client.GetSensorList(sensorId, columns)
+	if err != nil {
+		t.Errorf("It should be success but error: %v", err)
+	}
+	if len(sensorList) <= 0 {
+		t.Errorf("It should be not empty.")
+	}
+
+	// Check sensor list within id 9000 (empty)
+	sensorId = 9000
+	sensorList, err = client.GetSensorList(sensorId, columns)
+	if len(sensorList) > 0 {
+		t.Errorf("It should be empty.")
+	}
+
+	// Check sensor id less than zero
+	sensorId = -1
+	sensorList, err = client.GetSensorList(sensorId, columns)
+	if err == nil {
+		t.Errorf("Since the id is less than zero, an error should occur.")
+	}
+
+	// Check columns is nil
+	sensorId = 9301
+	columns = nil
+	sensorList, err = client.GetSensorList(sensorId, columns)
+	if err != nil {
+		t.Errorf("Columns should turn to default column if the columns are nil, but error: %v", err)
+	}
+	// Check columns contain so many random string
+	columns = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"}
+	sensorList, err = client.GetSensorList(sensorId, columns)
+	if err != nil {
+		t.Errorf("Columns should turn to default column if the column's values are too much, but error: %v", err)
+	}
+	// for sensor id 9321
+	sensorId = 9321
+	sensorList, err = client.GetSensorList(sensorId, columns)
+	if err == nil {
+		t.Errorf("Since the response's body is XML, an error should occur.")
 	}
 }

@@ -3,6 +3,7 @@ package prtg
 import (
 	"fmt"
 	"net/url"
+	"strings"
 	"time"
 )
 
@@ -36,7 +37,7 @@ type Client interface {
 	GetHistoricData(id, average int64, startDate, endDate *time.Time) ([]map[string]interface{}, error)
 
 	// Get all sensors under specific devices or groups
-	// GetSensorList(id int64, columns []string) error
+	GetSensorList(id int64, columns []string) ([]PrtgTableList, error)
 
 	// Get all devices under specific groups
 	// GetDeviceList(id int64, columns []string) error
@@ -60,10 +61,13 @@ var (
 	defaultTimeout int64 = 10000
 	deltaHistoricThreshold int64 = 31 * 24 * 60 * 60 // 31 days
 	dateFormat string = "2006-01-02-15-04-05"
+	defaultSensorListCols []string = []string{"objid","probe","group","device","sensor","status","message",
+												"lastvalue","priority","favorite"}
+	defaultSensorListColsLen int = len(defaultSensorListCols)
 )
 const (
 	GetSensorDetailsEndpoint = "/api/getsensordetails.json"
-	GetSensorListsEndpoint = "/api/table.json"
+	GetTableListsEndpoint = "/api/table.json"
 	GetHistoricDatasEndpoint = "/api/historicdata.json"
 	GetSensorTreesEndpoint = "/api/table.xml"
 	userAgent = "golang-prtg-api"
@@ -182,9 +186,9 @@ func getDeltaSecond(sDate, eDate time.Time) int64 {
 
 func (c *client) GetHistoricData(id, average int64, startDate, endDate time.Time) ([]PrtgHistoricData, error) {
 	// Validate Input
-	// Make sure that average is not less than 0
+	// Make sure that id and average is not less than 0
 	if id < 0 || average < 0{
-		return nil, fmt.Errorf("Id should be more than or equals to zero")
+		return nil, fmt.Errorf("Id and average should be more than or equals to zero")
 	}
 	// Make sure that data range less than 31 days
 	if deltaSecond := getDeltaSecond(startDate, endDate); (deltaSecond < 0) || (deltaSecond > deltaHistoricThreshold) {
@@ -192,14 +196,60 @@ func (c *client) GetHistoricData(id, average int64, startDate, endDate time.Time
 	}
 
 	// Get Historic Data using PRTG's API
-	histData, err := c.getHistoricData(id, average, startDate, endDate)
+	histDataResp, err := c.getHistoricData(id, average, startDate, endDate)
 	if err != nil {
 		return nil, fmt.Errorf("Unable to get historic data: %v", err)
 	}
-	if len(histData.HistoricData) <= 0 {
-		return histData.HistoricData, fmt.Errorf("No Data Found")
+	if len(histDataResp.HistoricData) <= 0 {
+		return histDataResp.HistoricData, fmt.Errorf("No Data Found")
 	}
 
 	// Return the historic data
-	return histData.HistoricData, nil
+	return histDataResp.HistoricData, nil
+}
+
+func (c *client) getTableList(id int64, content string, columns []string) (*PrtgTableListResponse, error) {
+	// Compose queries
+	q := c.getTemplateUrlQuery()
+	q.Set("id", fmt.Sprintf("%v", id))
+	q.Set("content", fmt.Sprintf("%v", content))
+	colStr := strings.Join(columns, ",")
+	q.Set("columns", fmt.Sprintf("%v", colStr))
+	p := GetTableListsEndpoint
+	// Complete URL
+	u, err := c.getCompleteUrl(p, q)
+	if err != nil {
+		return nil, err
+	}
+
+	tableListResp, err := getTableListData(u, c.timeout)
+	if err != nil {
+		return nil, err
+	}
+	return tableListResp, nil
+}
+
+func (c * client) GetSensorList(id int64, columns []string) ([]PrtgTableList, error) {
+	// Validate input
+	// Make sure that id is not less than 0
+	if id < 0 {
+		return nil, fmt.Errorf("Id should be more than or equals to zero")
+	}
+	// if columns is nil, use the default column's entry instead
+	if (columns == nil) || (len(columns) > defaultSensorListColsLen) {
+		columns = defaultSensorListCols
+	}
+
+	// Get sensor list within this group or device
+	content := "sensors"
+	sensorListResp, err := c.getTableList(id, content, columns)
+	if err != nil {
+		return nil, fmt.Errorf("Unable to get sensor list data: %v", err)
+	}
+	if len(sensorListResp.Sensors) <= 0 {
+		return sensorListResp.Sensors, fmt.Errorf("No Data Found")
+	}	
+
+	// Return sensor list
+	return sensorListResp.Sensors, nil
 }
