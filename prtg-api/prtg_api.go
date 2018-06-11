@@ -9,54 +9,21 @@ import (
 
 // Client's fields are read-only onece instantiated.
 // So it's safe to use it in concurrent condition.
-type client struct {
+type Client struct {
 	// PRTG's Server URL (mandatory)
 	// It should be in the form of http://host:port
-	server				string
+	Server				string
 
 	// Any account's username of PRTG (mandatory)
-	username			string
+	Username			string
 
 	// Any account's password of PRTG (mandatory)
-	password			string
+	Password			string
 
 	// Timeout Context in milisecond
-	timeout				int64
+	Timeout				int64
 }
 
-// Client is a client interface for querying PRTG's server.
-type Client interface {
-	// Get PRTG's version
-	GetPrtgVersion() (string, error)
-
-	// Get details of specific PRTG's sensor
-	GetSensorDetail(id int64) (*PrtgSensorData, error)
-	
-	// Get records of data from specific sensor
-	// The reponse's format depends on the sensor's type
-	GetHistoricData(id, average int64, startDate, endDate *time.Time) ([]map[string]interface{}, error)
-
-	// Get all sensors under specific devices or groups
-	GetSensorList(id int64, columns []string) ([]PrtgTableList, error)
-
-	// Get all devices under specific groups
-	// GetDeviceList(id int64, columns []string) error
-
-	// Get all groups under specific groups
-	// Since in PRTG, it's possible to have nested group
-	// GetGroupList(id int64, columns []string) error
-
-	// It's possible to capture the whole relation of sensors, devices, and groups
-	// in tree format, instead of getting the information separately using GetSensorList,
-	// GetDeviceList, and GetGroupList.
-	// If id is not zero, it will capture the sensortree from specific group or device.
-	// GetSensorTree(id int64) error
-
-	// Set Context HTTP Request Timeout
-	SetContextTimeout(timeout int64)
-}
-
-var instance *client
 var (
 	defaultTimeout int64 = 10000
 	deltaHistoricThreshold int64 = 31 * 24 * 60 * 60 // 31 days
@@ -65,6 +32,7 @@ var (
 												"lastvalue","priority","favorite"}
 	defaultSensorListColsLen int = len(defaultSensorListCols)
 )
+
 const (
 	GetSensorDetailsEndpoint = "/api/getsensordetails.json"
 	GetTableListsEndpoint = "/api/table.json"
@@ -74,35 +42,33 @@ const (
 )
 
 // Create new Client that later used to request data from PRTG's server
-func NewClient(server, username, password string) *client {
-	if instance == nil {
-		instance = new(client)
-	}
-	instance.server = server
-	instance.username = username
-	instance.password = password
-	instance.timeout = 10000
+func NewClient(server, username, password string) *Client {
+	instance := new(Client)
+	instance.Server = server
+	instance.Username = username
+	instance.Password = password
+	instance.Timeout = 10000
 	return instance
 }
 
 // Set Context HTTP Request Timeout in milisecond
-func (c *client) SetContextTimeout(timeout int64) {
+func (c *Client) SetContextTimeout(timeout int64) {
 	if (timeout <= 0) || (timeout >30000) {
-		instance.timeout = defaultTimeout
+		c.Timeout = defaultTimeout
 	} else {
-		instance.timeout = timeout
+		c.Timeout = timeout
 	}
 }
 
-func (c *client) getTemplateUrlQuery() (*url.Values) {
+func (c *Client) getTemplateUrlQuery() (*url.Values) {
 	q := url.Values{}
-	q.Set("username", c.username)
-	q.Set("password", c.password)
+	q.Set("username", c.Username)
+	q.Set("password", c.Password)
 	return &q
 }
 
-func (c *client) getCompleteUrl(p string, q *url.Values) (string, error) {
-	u, err := url.Parse(c.server)
+func (c *Client) getCompleteUrl(p string, q *url.Values) (string, error) {
+	u, err := url.Parse(c.Server)
 	if err != nil {
 		return "", fmt.Errorf("Unable to parse url: %v", err)
 	}
@@ -111,7 +77,7 @@ func (c *client) getCompleteUrl(p string, q *url.Values) (string, error) {
 	return u.String(), nil
 }
 
-func (c *client) getSensorDetail(q *url.Values) (*PrtgSensorDetailsResponse, error) {
+func (c *Client) getSensorDetail(q *url.Values) (*prtgSensorDetailsResponse, error) {
 	p := GetSensorDetailsEndpoint
 
 	// Complete URL
@@ -120,45 +86,46 @@ func (c *client) getSensorDetail(q *url.Values) (*PrtgSensorDetailsResponse, err
 		return nil, err
 	}
 
-	sensorDetail, err := getSensorDetail(u, c.timeout)
+	var sensorDetailResp prtgSensorDetailsResponse
+	err = getPrtgResponse(u, c.Timeout, &sensorDetailResp)
 	if err != nil {
 		return nil, err
 	}
-	return sensorDetail, nil
+	return &sensorDetailResp, nil
 }
 
 
 // Get PRTG's version.
 // Take nothing as input.
 // Return PRTG's version in string.
-func (c *client) GetPrtgVersion() (string, error) {
+func (c *Client) GetPrtgVersion() (string, error) {
 	// Set the query
 	q := c.getTemplateUrlQuery()
 	q.Set("id", "0")
 
-	sensorDetail, err := c.getSensorDetail(q)
+	sensorDetailResp, err := c.getSensorDetail(q)
 	if err != nil {
 		return "", err
 	}
-	return sensorDetail.PrtgVersion, nil
+	return sensorDetailResp.PrtgVersion, nil
 }
 
 // Get details for specific sensor.
 // Take sensor's id as input.
 // Return sensor structure.
-func (c *client) GetSensorDetail(id int64) (*PrtgSensorData, error) {
+func (c *Client) GetSensorDetail(id int64) (*PrtgSensorData, error) {
 	// Set the query
 	q := c.getTemplateUrlQuery()
 	q.Set("id", fmt.Sprintf("%v", id))
 
-	sensorDetail, err := c.getSensorDetail(q)
+	sensorDetailResp, err := c.getSensorDetail(q)
 	if err != nil {
 		return nil, err
 	}
-	return &sensorDetail.SensorData, nil
+	return &sensorDetailResp.SensorData, nil
 }
 
-func (c *client) getHistoricData(id, average int64, startDate, endDate time.Time) (*PrtgHistoricDataResponse, error) {
+func (c *Client) getHistoricData(id, average int64, startDate, endDate time.Time) (*prtgHistoricDataResponse, error) {
 	// Compose queries
 	q := c.getTemplateUrlQuery()
 	q.Set("id", fmt.Sprintf("%v", id))
@@ -173,18 +140,19 @@ func (c *client) getHistoricData(id, average int64, startDate, endDate time.Time
 		return nil, err
 	}
 
-	histDataResp, err := getHistoricData(u, c.timeout)
+	var histDataResp prtgHistoricDataResponse
+	err = getPrtgResponse(u, c.Timeout, &histDataResp)
 	if err != nil {
 		return nil, err
 	}
-	return histDataResp, nil
+	return &histDataResp, nil
 }
 
 func getDeltaSecond(sDate, eDate time.Time) int64 {
 	return eDate.Unix() - sDate.Unix()
 }
 
-func (c *client) GetHistoricData(id, average int64, startDate, endDate time.Time) ([]PrtgHistoricData, error) {
+func (c *Client) GetHistoricData(id, average int64, startDate, endDate time.Time) ([]PrtgHistoricData, error) {
 	// Validate Input
 	// Make sure that id and average is not less than 0
 	if id < 0 || average < 0{
@@ -208,7 +176,7 @@ func (c *client) GetHistoricData(id, average int64, startDate, endDate time.Time
 	return histDataResp.HistoricData, nil
 }
 
-func (c *client) getTableList(id int64, content string, columns []string) (*PrtgTableListResponse, error) {
+func (c *Client) getTableList(id int64, content string, columns []string) (*prtgTableListResponse, error) {
 	// Compose queries
 	q := c.getTemplateUrlQuery()
 	q.Set("id", fmt.Sprintf("%v", id))
@@ -222,14 +190,15 @@ func (c *client) getTableList(id int64, content string, columns []string) (*Prtg
 		return nil, err
 	}
 
-	tableListResp, err := getTableListData(u, c.timeout)
+	var tableListResp prtgTableListResponse
+	err = getPrtgResponse(u, c.Timeout, &tableListResp)
 	if err != nil {
 		return nil, err
 	}
-	return tableListResp, nil
+	return &tableListResp, nil
 }
 
-func (c * client) GetSensorList(id int64, columns []string) ([]PrtgTableList, error) {
+func (c * Client) GetSensorList(id int64, columns []string) ([]PrtgTableList, error) {
 	// Validate input
 	// Make sure that id is not less than 0
 	if id < 0 {
@@ -253,3 +222,16 @@ func (c * client) GetSensorList(id int64, columns []string) ([]PrtgTableList, er
 	// Return sensor list
 	return sensorListResp.Sensors, nil
 }
+
+// Get all devices under specific groups
+// func (c * Client) GetDeviceList(id int64, columns []string) error
+
+// Get all groups under specific groups
+// Since in PRTG, it's possible to have nested group
+// func (c * Client) GetGroupList(id int64, columns []string) error
+
+// It's possible to capture the whole relation of sensors, devices, and groups
+// in tree format, instead of getting the information separately using GetSensorList,
+// GetDeviceList, and GetGroupList.
+// If id is not zero, it will capture the sensortree from specific group or device.
+// func (c * Client) GetSensorTree(id int64) error

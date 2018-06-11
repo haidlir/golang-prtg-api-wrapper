@@ -47,22 +47,3 @@ func TestRespStatusCode(t *testing.T) {
 		t.Errorf("%v", err)
 	}
 }
-
-func TestJsonUnmarshalGetSensorDetail(t *testing.T) {
-	mux := new(http.ServeMux)
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
-		fmt.Fprint(w, loadfixture("/prtg_version_error.json"))
-	})
-	httpServer := setup(mux)
-	defer httpServer.Close()
-	serverURL, _ := url.Parse(httpServer.URL)
-
-	u := fmt.Sprintf("%v/", serverURL)
-	var timeout int64 = 10000
-	result, err := getSensorDetail(u, timeout)
-	if err == nil {
-		t.Errorf("%v", result)
-	}
-}

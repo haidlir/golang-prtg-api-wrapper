@@ -25,9 +25,9 @@ func TestNewClient(t *testing.T) {
 
 	// Trying to change the server
 	server = "http://127.0.0.1"
-	_ =  NewClient(server, username, password)
-	if client.server != "http://127.0.0.1" {
-		t.Errorf("Server is %v instead of 127.0.0.1", client.server)
+	client =  NewClient(server, username, password)
+	if client.Server != "http://127.0.0.1" {
+		t.Errorf("Server is %v instead of http://127.0.0.1", client.Server)
 	}
 }
 
@@ -38,24 +38,24 @@ func TestSetContextTimeout(t *testing.T) {
 	client := NewClient(server, username, password)
 
 	// Check whether client contains default context timeout or not.
-	if client.timeout != 10000 {
-		t.Errorf("client's context timeout is %vms instead of 10s", client.timeout)
+	if client.Timeout != 10000 {
+		t.Errorf("client's context timeout is %vms instead of 10s", client.Timeout)
 	}
 
 	// Trying to change the client context timeout more than or equals 30000
 	client.SetContextTimeout(30001)
-	if client.timeout != 10000 {
-		t.Errorf("client's context timeout is %vms instead of 10s", client.timeout)
+	if client.Timeout != 10000 {
+		t.Errorf("client's context timeout is %vms instead of 10s", client.Timeout)
 	}
 	// Trying to change the client context timeout less than or equals to 30000
 	client.SetContextTimeout(-1)
-	if client.timeout != 10000 {
-		t.Errorf("client's context timeout is %vms instead of 10s", client.timeout)
+	if client.Timeout != 10000 {
+		t.Errorf("client's context timeout is %vms instead of 10s", client.Timeout)
 	}
 	// Trying to change the client context timeout more than 30000
 	client.SetContextTimeout(30000)
-	if client.timeout != 30000 {
-		t.Errorf("client's context timeout is %vms instead of 30000ms", client.timeout)
+	if client.Timeout != 30000 {
+		t.Errorf("client's context timeout is %vms instead of 30000ms", client.Timeout)
 	}
 }
 
@@ -75,18 +75,18 @@ func TestGetCompleteUrl(t *testing.T) {
 
 		_, err := client.GetPrtgVersion()
 		if err == nil {
-			t.Errorf("It Should be error when server %v", client.server)
+			t.Errorf("It Should be error when server %v", client.Server)
 		}
 
 		sensorId, average, sDate, eDate := composeDummyHistAPIParam()
 		_, err = client.GetHistoricData(sensorId, average, sDate, eDate)
 		if err == nil {
-			t.Errorf("It Should be error when server %v", client.server)
+			t.Errorf("It Should be error when server %v", client.Server)
 		}
 
 		_, err = client.GetSensorList(sensorId, nil)
 		if err == nil {
-			t.Errorf("It Should be error when server %v", client.server)
+			t.Errorf("It Should be error when server %v", client.Server)
 		}
 	}
 }

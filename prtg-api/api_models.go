@@ -1,6 +1,6 @@
 package prtg
 
-type PrtgSensorDetailsResponse struct {
+type prtgSensorDetailsResponse struct {
 	PrtgVersion				string				`json:"prtgversion"`
 	SensorData				PrtgSensorData		`json:"sensordata"`
 }
@@ -19,7 +19,7 @@ type PrtgSensorData struct {
 	StatusText				string				`json:"statustext"`
 	StatusId				string				`json:"statusid"`
 	LastUp					string				`json:"lastup"`
-	lastDown				string				`json:"lastdown"`
+	LastDown				string				`json:"lastdown"`
 	LastCheck				string				`json:"lastcheck"`
 	Uptime					string				`json:"uptime"`
 	UptimeTime				string				`json:"uptimetime"`
@@ -30,7 +30,7 @@ type PrtgSensorData struct {
 	Info					string				`json:"info"`
 }
 
-type PrtgTableListResponse struct {
+type prtgTableListResponse struct {
 	PrtgVersion				string				`json:"prtg-version"`
 	TreeSize				int64				`json:"treesize"`
 	Groups					[]PrtgTableList		`json:"groups,omitempty"`
@@ -53,7 +53,7 @@ type PrtgTableList struct {
 	UndefinedSensors		int64				`json:"undefinedsens_raw"`
 }
 
-type PrtgHistoricDataResponse struct {
+type prtgHistoricDataResponse struct {
 	PrtgVersion				string				`json:"prtg-version"`
 	TreeSize				int64				`json:"treesize"`
 	HistoricData			[]PrtgHistoricData	`json:"histdata"`
@@ -61,7 +61,7 @@ type PrtgHistoricDataResponse struct {
 
 type PrtgHistoricData map[string]interface{}
 
-type PrtgSensorTreeResponse struct {
+type prtgSensorTreeResponse struct {
 	PrtgVersion				string				`xml:"prtg>prtg-version"`
 	SensorTreeGroups		[]SensorTreeGroup	`xml:"prtg>sensortree>nodes>group id"`
 }

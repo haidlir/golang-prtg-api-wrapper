@@ -40,53 +40,18 @@ func getHTTPBody(url string, timeout int64) ([]byte, error) {
 	return body, nil
 }
 
-func getSensorDetail(url string, timeout int64) (*PrtgSensorDetailsResponse, error) {
+func getPrtgResponse(url string, timeout int64, v interface{}) (error) {
 	body, err := getHTTPBody(url, timeout)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	// Unmarshal
-	var msg PrtgSensorDetailsResponse
-	err = json.Unmarshal(body, &msg)
+	err = json.Unmarshal(body, &v)
 	if err != nil {
-		return nil, fmt.Errorf("Unable to unmarshal json response: %v", err)
+		return fmt.Errorf("Unable to unmarshal json response: %v", err)
 	}
 
-	return &msg, nil
-
-}
-
-func getHistoricData(url string, timeout int64) (*PrtgHistoricDataResponse, error) {
-	body, err := getHTTPBody(url, timeout)
-	if err != nil {
-		return nil, err
-	}
-
-	// Unmarshal
-	var msg PrtgHistoricDataResponse
-	err = json.Unmarshal(body, &msg)
-	if err != nil {
-		return nil, fmt.Errorf("Unable to unmarshal json response: %v", err)
-	}
-
-	return &msg, nil
-
-}
-
-func getTableListData(url string, timeout int64) (*PrtgTableListResponse, error) {
-	body, err := getHTTPBody(url, timeout)
-	if err != nil {
-		return nil, err
-	}
-
-	// Unmarshal
-	var msg PrtgTableListResponse
-	err = json.Unmarshal(body, &msg)
-	if err != nil {
-		return nil, fmt.Errorf("Unable to unmarshal json response: %v", err)
-	}
-
-	return &msg, nil
+	return nil
 
 }
