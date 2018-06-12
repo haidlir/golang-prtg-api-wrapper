@@ -337,3 +337,150 @@ func TestGetSensorList(t *testing.T) {
 		t.Errorf("Since the response's body is XML, an error should occur.")
 	}
 }
+
+func TestGetDeviceList(t *testing.T) {
+	mux := new(http.ServeMux)
+	mux.HandleFunc(GetTableListsEndpoint, func(w http.ResponseWriter, r *http.Request) {
+		sensorId := r.FormValue("id")
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		if sensorId == "9217" {
+			fmt.Fprint(w, loadfixture("/prtg_device-list_9217.json"))
+		} else if sensorId == "9000" {
+			fmt.Fprint(w, loadfixture("/prtg_device-list_9000_empty.json"))
+		} else if sensorId == "9321" {
+			fmt.Fprint(w, loadfixture("/prtg_histdata_9321.xml"))
+		}
+	})
+	httpServer := setup(mux)
+	defer httpServer.Close()
+	serverURL, _ := url.Parse(httpServer.URL)
+
+	server := fmt.Sprintf("%v", serverURL)
+	username := "user"
+	password := "pass"
+	var sensorId int64
+	var columns []string
+	client := NewClient(server, username, password)
+
+	// Check sensor list within id 9301
+	sensorId = 9217
+	columns = []string{"objid","probe","group","device","host","downsens","partialdownsens",
+						"downacksens","upsens","warnsens","pausedsens","unusualsens",
+						"undefinedsens"}
+	deviceList, err := client.GetDeviceList(sensorId, columns)
+	if err != nil {
+		t.Errorf("It should be success but error: %v", err)
+	}
+	if len(deviceList) <= 0 {
+		t.Errorf("It should be not empty.")
+	}
+
+	// Check sensor list within id 9000 (empty)
+	sensorId = 9000
+	deviceList, err = client.GetDeviceList(sensorId, columns)
+	if len(deviceList) > 0 {
+		t.Errorf("It should be empty.")
+	}
+
+	// Check sensor id less than zero
+	sensorId = -1
+	deviceList, err = client.GetDeviceList(sensorId, columns)
+	if err == nil {
+		t.Errorf("Since the id is less than zero, an error should occur.")
+	}
+
+	// Check columns is nil
+	sensorId = 9217
+	columns = nil
+	deviceList, err = client.GetDeviceList(sensorId, columns)
+	if err != nil {
+		t.Errorf("Columns should turn to default column if the columns are nil, but error: %v", err)
+	}
+	// Check columns contain so many random string
+	columns = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+						"t", "u", "v", "w", "x", "y", "z"}
+	deviceList, err = client.GetDeviceList(sensorId, columns)
+	if err != nil {
+		t.Errorf("Columns should turn to default column if the column's values are too much, but error: %v", err)
+	}
+	// for sensor id 9321
+	sensorId = 9321
+	deviceList, err = client.GetDeviceList(sensorId, columns)
+	if err == nil {
+		t.Errorf("Since the response's body is XML, an error should occur.")
+	}
+}
+
+func TestGetGroupList(t *testing.T) {
+	mux := new(http.ServeMux)
+	mux.HandleFunc(GetTableListsEndpoint, func(w http.ResponseWriter, r *http.Request) {
+		sensorId := r.FormValue("id")
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		if sensorId == "0" {
+			fmt.Fprint(w, loadfixture("/prtg_group-list_0.json"))
+		} else if sensorId == "9000" {
+			fmt.Fprint(w, loadfixture("/prtg_group-list_9000_empty.json"))
+		} else if sensorId == "9321" {
+			fmt.Fprint(w, loadfixture("/prtg_histdata_9321.xml"))
+		}
+	})
+	httpServer := setup(mux)
+	defer httpServer.Close()
+	serverURL, _ := url.Parse(httpServer.URL)
+
+	server := fmt.Sprintf("%v", serverURL)
+	username := "user"
+	password := "pass"
+	var sensorId int64
+	var columns []string
+	client := NewClient(server, username, password)
+
+	// Check sensor list within id 9301
+	sensorId = 0
+	columns = []string{"objid","probe","group","name","downsens","partialdownsens","downacksens",
+						"upsens","warnsens","pausedsens","unusualsens","undefinedsens"}
+	groupList, err := client.GetGroupList(sensorId, columns)
+	if err != nil {
+		t.Errorf("It should be success but error: %v", err)
+	}
+	if len(groupList) <= 0 {
+		t.Errorf("It should be not empty.")
+	}
+
+	// Check sensor list within id 9000 (empty)
+	sensorId = 9000
+	groupList, err = client.GetGroupList(sensorId, columns)
+	if len(groupList) > 0 {
+		t.Errorf("It should be empty.")
+	}
+
+	// Check sensor id less than zero
+	sensorId = -1
+	groupList, err = client.GetGroupList(sensorId, columns)
+	if err == nil {
+		t.Errorf("Since the id is less than zero, an error should occur.")
+	}
+
+	// Check columns is nil
+	sensorId = 0
+	columns = nil
+	groupList, err = client.GetGroupList(sensorId, columns)
+	if err != nil {
+		t.Errorf("Columns should turn to default column if the columns are nil, but error: %v", err)
+	}
+	// Check columns contain so many random string
+	columns = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+						"t", "u", "v", "w", "x", "y", "z"}
+	groupList, err = client.GetGroupList(sensorId, columns)
+	if err != nil {
+		t.Errorf("Columns should turn to default column if the column's values are too much, but error: %v", err)
+	}
+	// for sensor id 9321
+	sensorId = 9321
+	groupList, err = client.GetGroupList(sensorId, columns)
+	if err == nil {
+		t.Errorf("Since the response's body is XML, an error should occur.")
+	}
+}

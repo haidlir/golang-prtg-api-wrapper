@@ -43,6 +43,9 @@ type PrtgTableList struct {
 	Probe					string				`json:"probe"`
 	Group					string				`json:"group"`
 	Name					string				`json:"name"`
+	Device					string				`json:"device"`
+	Host					string				`json:"host"`
+	Sensor					string				`json:"sensor"`
 	DownSensors				int64				`json:"downsens_raw"`
 	PartialDownSensors		int64				`json:"partialdownsens_raw"`
 	DownAckSensors			int64				`json:"downacksens_raw"`

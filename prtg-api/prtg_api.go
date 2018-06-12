@@ -31,6 +31,13 @@ var (
 	defaultSensorListCols []string = []string{"objid","probe","group","device","sensor","status","message",
 												"lastvalue","priority","favorite"}
 	defaultSensorListColsLen int = len(defaultSensorListCols)
+	defaultDeviceListCols []string = []string{"objid","probe","group","device","host","downsens","partialdownsens",
+												"downacksens","upsens","warnsens","pausedsens","unusualsens",
+												"undefinedsens"}
+	defaultDeviceListColsLen int = len(defaultDeviceListCols)
+	defaultGroupListCols []string = []string{"objid","probe","group","name","downsens","partialdownsens","downacksens",
+												"upsens","warnsens","pausedsens","unusualsens","undefinedsens"}
+	defaultGroupListColsLen int = len(defaultGroupListCols)
 )
 
 const (
@@ -224,11 +231,57 @@ func (c * Client) GetSensorList(id int64, columns []string) ([]PrtgTableList, er
 }
 
 // Get all devices under specific groups
-// func (c * Client) GetDeviceList(id int64, columns []string) error
+func (c * Client) GetDeviceList(id int64, columns []string) ([]PrtgTableList, error) {
+	// Validate input
+	// Make sure that id is not less than 0
+	if id < 0 {
+		return nil, fmt.Errorf("Id should be more than or equals to zero")
+	}
+	// if columns is nil, use the default column's entry instead
+	if (columns == nil) || (len(columns) > defaultDeviceListColsLen) {
+		columns = defaultDeviceListCols
+	}
+
+	// Get sensor list within this group or device
+	content := "devices"
+	sensorListResp, err := c.getTableList(id, content, columns)
+	if err != nil {
+		return nil, fmt.Errorf("Unable to get device list data: %v", err)
+	}
+	if len(sensorListResp.Devices) <= 0 {
+		return sensorListResp.Devices, fmt.Errorf("No Data Found")
+	}	
+
+	// Return sensor list
+	return sensorListResp.Devices, nil
+}
 
 // Get all groups under specific groups
 // Since in PRTG, it's possible to have nested group
-// func (c * Client) GetGroupList(id int64, columns []string) error
+func (c * Client) GetGroupList(id int64, columns []string) ([]PrtgTableList, error) {
+	// Validate input
+	// Make sure that id is not less than 0
+	if id < 0 {
+		return nil, fmt.Errorf("Id should be more than or equals to zero")
+	}
+	// if columns is nil, use the default column's entry instead
+	if (columns == nil) || (len(columns) > defaultGroupListColsLen) {
+		columns = defaultGroupListCols
+	}
+
+	// Get sensor list within this group or device
+	content := "groups"
+	sensorListResp, err := c.getTableList(id, content, columns)
+	if err != nil {
+		return nil, fmt.Errorf("Unable to get group list data: %v", err)
+	}
+	if len(sensorListResp.Groups) <= 0 {
+		return sensorListResp.Groups, fmt.Errorf("No Data Found")
+	}	
+
+	// Return sensor list
+	return sensorListResp.Groups, nil
+}
 
 // It's possible to capture the whole relation of sensors, devices, and groups
 // in tree format, instead of getting the information separately using GetSensorList,

@@ -53,5 +53,4 @@ func getPrtgResponse(url string, timeout int64, v interface{}) (error) {
 	}
 
 	return nil
-
 }
