@@ -1,4 +1,5 @@
 # golang-prtg-api-wrapper
+[![Build Status](https://travis-ci.org/haidlir/golang-prtg-api-wrapper.svg?branch=master)](https://travis-ci.org/haidlir/golang-prtg-api-wrapper) [![Coverage Status](https://coveralls.io/repos/github/haidlir/golang-prtg-api-wrapper/badge.svg?branch=master)](https://coveralls.io/github/haidlir/golang-prtg-api-wrapper?branch=master) [![Go Report Card](https://goreportcard.com/badge/github.com/haidlir/golang-prtg-api-wrapper)](https://goreportcard.com/report/github.com/haidlir/golang-prtg-api-wrapper) [![GoDoc](https://godoc.org/github.com/haidlir/golang-prtg-api-wrapper/prtg-api?status.svg)](https://godoc.org/github.com/haidlir/golang-prtg-api-wrapper/prtg-api)<br />
 PRTG API WRAPPER for Golang Developer
 
 ## Status

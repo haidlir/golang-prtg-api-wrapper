@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/url"
-	"testing"
 	"os"
 	"path/filepath"
+	"testing"
 	"time"
 )
 
@@ -25,7 +25,7 @@ func TestNewClient(t *testing.T) {
 
 	// Trying to change the server
 	server = "http://127.0.0.1"
-	client =  NewClient(server, username, password)
+	client = NewClient(server, username, password)
 	if client.Server != "http://127.0.0.1" {
 		t.Errorf("Server is %v instead of http://127.0.0.1", client.Server)
 	}
@@ -70,7 +70,7 @@ func composeDummyHistAPIParam() (sensorId, average int64, sDate, eDate time.Time
 func TestGetCompleteUrl(t *testing.T) {
 	servers := []string{" http://localhost", "localhost"}
 
-	for _, server := range(servers) {
+	for _, server := range servers {
 		client := NewClient(server, "", "")
 
 		_, err := client.GetPrtgVersion()
@@ -241,7 +241,6 @@ func TestHistData(t *testing.T) {
 		t.Errorf("Since the response's body is XML, an error should occur.")
 	}
 
-
 	// Should return error, if data range is more than 31 days
 	sDate = time.Date(2018, time.May, 1, 0, 0, 0, 0, time.UTC)
 	eDate = time.Date(2018, time.June, 1, 0, 0, 1, 0, time.UTC)
@@ -293,8 +292,8 @@ func TestGetSensorList(t *testing.T) {
 
 	// Check sensor list within id 9301
 	sensorId = 9301
-	columns = []string{"objid","probe","group","device","sensor","status","message",
-												"lastvalue","priority","favorite"}
+	columns = []string{"objid", "probe", "group", "device", "sensor", "status", "message",
+		"lastvalue", "priority", "favorite"}
 	sensorList, err := client.GetSensorList(sensorId, columns)
 	if err != nil {
 		t.Errorf("It should be success but error: %v", err)
@@ -365,9 +364,9 @@ func TestGetDeviceList(t *testing.T) {
 
 	// Check sensor list within id 9301
 	sensorId = 9217
-	columns = []string{"objid","probe","group","device","host","downsens","partialdownsens",
-						"downacksens","upsens","warnsens","pausedsens","unusualsens",
-						"undefinedsens"}
+	columns = []string{"objid", "probe", "group", "device", "host", "downsens", "partialdownsens",
+		"downacksens", "upsens", "warnsens", "pausedsens", "unusualsens",
+		"undefinedsens"}
 	deviceList, err := client.GetDeviceList(sensorId, columns)
 	if err != nil {
 		t.Errorf("It should be success but error: %v", err)
@@ -399,7 +398,7 @@ func TestGetDeviceList(t *testing.T) {
 	}
 	// Check columns contain so many random string
 	columns = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
-						"t", "u", "v", "w", "x", "y", "z"}
+		"t", "u", "v", "w", "x", "y", "z"}
 	deviceList, err = client.GetDeviceList(sensorId, columns)
 	if err != nil {
 		t.Errorf("Columns should turn to default column if the column's values are too much, but error: %v", err)
@@ -439,8 +438,8 @@ func TestGetGroupList(t *testing.T) {
 
 	// Check sensor list within id 9301
 	sensorId = 0
-	columns = []string{"objid","probe","group","name","downsens","partialdownsens","downacksens",
-						"upsens","warnsens","pausedsens","unusualsens","undefinedsens"}
+	columns = []string{"objid", "probe", "group", "name", "downsens", "partialdownsens", "downacksens",
+		"upsens", "warnsens", "pausedsens", "unusualsens", "undefinedsens"}
 	groupList, err := client.GetGroupList(sensorId, columns)
 	if err != nil {
 		t.Errorf("It should be success but error: %v", err)
@@ -472,7 +471,7 @@ func TestGetGroupList(t *testing.T) {
 	}
 	// Check columns contain so many random string
 	columns = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
-						"t", "u", "v", "w", "x", "y", "z"}
+		"t", "u", "v", "w", "x", "y", "z"}
 	groupList, err = client.GetGroupList(sensorId, columns)
 	if err != nil {
 		t.Errorf("Columns should turn to default column if the column's values are too much, but error: %v", err)

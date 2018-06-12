@@ -39,7 +39,7 @@ func main() {
 	}
 	log.Printf("History Data Record from %v to %v:", startDate, endDate)
 	fmt.Printf(". Total Data: %v\n", len(histData))
-	for _, data := range(histData) {
+	for _, data := range histData {
 		fmt.Printf("%v - %vms\n", data["datetime"], data["Loading time"])
 	}
 }

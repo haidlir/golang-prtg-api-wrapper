@@ -14,7 +14,7 @@ func main() {
 	password := "demodemo"
 	client := prtg.NewClient(server, username, password)
 
-	var sensorId int64 = 0 // Root Group Object ID
+	var sensorId int64 = 9217 // Group Object ID
 	sensorDetail, err := client.GetSensorDetail(sensorId)
 	if err != nil {
 		log.Println(err)
@@ -27,14 +27,14 @@ func main() {
 	fmt.Printf(". Group's Parent Device: %v\n", sensorDetail.ParentDeviceName)
 	fmt.Printf(". Group Status: %v\n", sensorDetail.StatusText)
 
-	groupList, err := client.GetGroupList(sensorId, nil)
+	deviceList, err := client.GetDeviceList(sensorId, nil)
 	if err != nil {
 		log.Println(err)
 		return
 	}
-	log.Printf("List of group under sensor %v:", sensorId)
-	fmt.Printf(". Total group: %v\n", len(groupList))
-	for _, group := range(groupList) {
-		fmt.Printf(". %v - %v - %v\n", group.ObjectId, group.Group, group.Name)
+	log.Printf("List of device under sensor %v:", sensorId)
+	fmt.Printf(". Total device: %v\n", len(deviceList))
+	for _, device := range deviceList {
+		fmt.Printf(". %v - %v - %v\n", device.ObjectId, device.Device, device.Host)
 	}
 }

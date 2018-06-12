@@ -34,7 +34,7 @@ func main() {
 	}
 	log.Printf("List of sensor under sensor %v:", sensorId)
 	fmt.Printf(". Total sensor: %v\n", len(sensorList))
-	for _, sensor := range(sensorList) {
+	for _, sensor := range sensorList {
 		fmt.Printf(". %v - %v - %v\n", sensor.ObjectId, sensor.Sensor, sensor.Probe)
 	}
 }
