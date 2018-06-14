@@ -15,14 +15,14 @@ func TestGetHttpBody(t *testing.T) {
 	// Wrong written url
 	url = " http://localhost"
 	timeout = 10000
-	_, err = getHTTPBody(url, timeout)
+	_, _, err = getHTTPBody(url, timeout)
 	if err == nil {
 		t.Errorf("It Should be error (at NewRequest()) if url %v", url)
 	}
 
 	// When server not found or inactive
 	url = "http://localhost"
-	_, err = getHTTPBody(url, timeout)
+	_, _, err = getHTTPBody(url, timeout)
 	if err == nil {
 		t.Errorf("It Should be error (at Send Request) if server down: %v", err)
 	}
@@ -42,7 +42,27 @@ func TestRespStatusCode(t *testing.T) {
 	path := "wrong/path"
 	u := fmt.Sprintf("%v/%v", serverURL, path)
 	var timeout int64 = 10000
-	_, err := getHTTPBody(u, timeout)
+	_, _, err := getHTTPBody(u, timeout)
+	if err == nil {
+		t.Errorf("%v", err)
+	}
+}
+
+func TestUnauthorizedAccess(t *testing.T) {
+	mux := new(http.ServeMux)
+	mux.HandleFunc(GetSensorDetailsEndpoint, func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("LoginAgain", "true")
+		w.WriteHeader(http.StatusUnauthorized)
+		fmt.Fprint(w, nil)
+	})
+	httpServer := setup(mux)
+	defer httpServer.Close()
+	serverURL, _ := url.Parse(httpServer.URL)
+
+	path := GetSensorDetailsEndpoint
+	u := fmt.Sprintf("%v/%v", serverURL, path)
+	var timeout int64 = 10000
+	_, _, err := getHTTPBody(u, timeout)
 	if err == nil {
 		t.Errorf("%v", err)
 	}

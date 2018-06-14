@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<prtg>
+    <prtg-version>18.2.41.1636</prtg-version>
+    <options>
+        <usertimezone>
+            <bias>-60</bias>
+            <standardbias>0</standardbias>
+            <daylightbias>-60</daylightbias>
+            <standarddatemonth>10</standarddatemonth>
+            <standarddatedayofweek>0</standarddatedayofweek>
+            <standarddateday>5</standarddateday>
+            <standarddatehour>3</standarddatehour>
+            <standarddateminute>0</standarddateminute>
+            <daylightdatemonth>3</daylightdatemonth>
+            <daylightdatedayofweek>0</daylightdatedayofweek>
+            <daylightdateday>5</daylightdateday>
+            <daylightdatehour>2</daylightdatehour>
+            <daylightdateminute>0</daylightdateminute>
+        </usertimezone>
+        <userdatesettings>
+            <shorttimeformat>h:mm AMPM</shorttimeformat>
+            <longtimeformat>h:mm:ss AMPM</longtimeformat>
+            <shortdateformat>M/d/yyyy</shortdateformat>
+            <longdateformat>dddd, MMMM d, yyyy</longdateformat>
+            <dateseparator>/</dateseparator>
+            <timeseparator>:</timeseparator>
+        </userdatesettings>
+        <graphs>
+            <live>240</live>
+            <graph1>2d|5m</graph1>
+            <graph2>30d|1h</graph2>
+            <graph3>365d|1d</graph3>
+        </graphs>
+        <sensortypes>"aggregation=Sensor Factory","businessprocess=Business Process","cloudhttp=Cloud HTTP","cloudping=Cloud Ping","commonsaas=Common SaaS",dns=DNS,"esxserverhealthsensorextern=VMware Host Hardware Status (SOAP)","esxserversensorextern=VMware Host Performance (SOAP)",exe=EXE/Script,"exexml=EXE/Script Advanced",ftp=FTP,http=HTTP,"httpadvanced=HTTP Advanced","httpcontent=HTTP Content","httpdataadvanced=HTTP Data Advanced","httpfull=HTTP Full Web Page","httptransaction=HTTP Transaction","netflow9header=NetFlow V9","netflowcustom=NetFlow V5 (Custom)","netflowheader=NetFlow V5",ping=Ping,port=Port,probe=Probe,"probestate=Probe Health","ptfftpcount=FTP Server File Count","ptfhttpxmlrestvalue=HTTP XML/REST Value","qosroundtrip=QoS (Quality of Service) Round Trip","remotedesktop=RDP (Remote Desktop)",smtp=SMTP,"snifferheader=Packet Sniffer","snmpciscoasavpnconnections=SNMP Cisco ASA VPN Connections","snmpciscoasavpntraffic=SNMP Cisco ASA VPN Traffic","snmpciscoasavpnusers=SNMP Cisco ASA VPN Users","snmpciscocbqos=SNMP Cisco CBQoS","snmpciscosystemhealth=SNMP Cisco System Health","snmpciscoucschassis=SNMP Cisco UCS Chassis","snmpciscoucsphysicaldisk=SNMP Cisco UCS Physical Disk","snmpciscoucssystemhealth=SNMP Cisco UCS System Health","snmpcpu=SNMP CPU Load","snmpcustom=SNMP Custom","snmpcustomadvanced=SNMP Custom Advanced","snmpcustomstring=SNMP Custom String","snmpdellphysicaldisk=SNMP Dell PowerEdge Physical Disk","snmpdellsonicwallsystemhealth=SNMP SonicWall System Health","snmpdellsystemhealth=SNMP Dell PowerEdge System Health","snmpdiskfree=SNMP Disk Free","snmphpmemorycontroller=SNMP HP ProLiant Memory Controller","snmphpsystemhealth=SNMP HP ProLiant System Health","snmpibmlogicaldisk=SNMP IBM System X Logical Disk","snmpibmphysicaldisk=SNMP IBM System X Physical Disk","snmpibmphysicalmemory=SNMP IBM System X Physical Memory","snmpibmsystemhealth=SNMP IBM System X System Health","snmplenovoemcphysicaldisk=SNMP LenovoEMC Physical Disk","snmplenovoemcsystemhealth=SNMP LenovoEMC System Health","snmplibrary=SNMP Library","snmpmemory=SNMP Memory","snmpnetappdiskfree=SNMP NetApp Disk Free","snmpnetappenclosurestatus=SNMP NetApp Enclosure","snmpnetappio=SNMP NetApp I/O","snmpnetappnetworkinterface=SNMP NetApp Network Interface","snmpnetappsystemhealth=SNMP NetApp System Health","snmpqnaplogicaldisk=SNMP QNAP Logical Disk","snmpqnapphysicaldisk=SNMP QNAP Physical Disk","snmpqnapsystemhealth=SNMP QNAP System Health","snmpsynologylogicaldisk=SNMP Synology Logical Disk","snmpsynologyphysicaldisk=SNMP Synology Physical Disk","snmpsynologysystemhealth=SNMP Synology System Health","snmptraffic=SNMP Traffic","snmpuptime=SNMP System Uptime","sshdiskfree=SSH Disk Free","sshinodesfree=SSH INodes Free","sshloadavg=SSH Load Average","sshmeminfo=SSH Meminfo","sshscript=SSH Script","ssl=SSL Security Check","sslcertificate=SSL Certificate Sensor","systemstate=System Health","vcenterserverextern=VMware Virtual Machine (SOAP)","vmwaredatastoreextern=VMware Datastore (SOAP)","wmidiskspace=WMI Free Disk Space (Multi Disk)","wmilogicaldisk=WMI Logical Disk DEPRECATED","wmilogicaldiskv2=WMI Logical Disk I/O BETA","wmimemory=WMI Memory","wminetwork=Windows Network Card","wmipagefile=Windows Pagefile","wmiphysicaldiskv2=Windows Physical Disk I/O BETA","wmiprocess=Windows Process","wmiprocessor=Windows CPU Load","wmiselection=WMI Vital System Data (V1)","wmiuptime=Windows System Uptime","xen6hostsensor=Citrix XenServer Host","xen6vmsensor=Citrix XenServer Virtual Machine"</sensortypes>
+        <usedtags>bandwidthsensor,businessprocess,businessprocesssensor,cbqossensor,certificate,chassis,cisco,ciscocpu,ciscofans,ciscomemory,ciscopowersupply,ciscotemperature,ciscovoltage,cloudsensors,commonsaas,cpu,cpuloadsensor,dell,diskfree,diskspacesensor,dnssensor,factorysensor,firewall.paessler.com,ftpsensor,hp,httpfullsensor,httpsensor,httptransactionsensor,ibm,lenovoemc,logicaldisk,mailsensor,memory,memorycontroller,memorysensor,netapp,netflowsensor,paesslerhomepage,physicaldisk,pingsensor,portsensor,ptfsensor,qnap,saas,smtpsensor,snmp,snmpciscoasavpnconnectionssensor,snmpciscoasavpnsensor,snmpciscoasavpntrafficsensor,snmpciscophysicaldisksensor,snmpciscosystemhealthsensor,snmpdell,snmpdellphysicaldisksensor,snmpdellsystemhealthsensor,snmpdiskfreesensor,snmphp,snmphpmemorycontrollersensor,snmphpsystemhealthsensor,snmpibm,snmpibmlogicaldisksensor,snmpibmphysicaldisksensor,snmpibmphysicalmemorysensor,snmpibmsystemhealthsensor,snmplenovoemc,snmpmemorysensor,snmpnetapp,snmpnetappdiskfreesensor,snmpnetappenclosuresensor,snmpnetappiosensor,snmpnetappnetworkinterfacesensor,snmpnetappsystemhealthsensor,snmpqnap,snmpsonicwallsystemhealthsensor,snmpsynology,snmptrafficsensor,snmpuptimesensor,ssl,sslcertificate,sslsensor,synology,systemhealth,ucs,ucssystemhealth,wmicpuloadsensor,wmilogicalsensor,wmimemorysensor,www.paessler.com</usedtags>
+        <tasks>
+            <autodisco>0</autodisco>
+            <histcalc>0</histcalc>
+            <correlationstatus>0</correlationstatus>
+            <correlationrunning>0</correlationrunning>
+            <autoupdate>0</autoupdate>
+            <maintenance>4710</maintenance>
+            <trialdaysleft>4710</trialdaysleft>
+            <showchanneltab>0</showchanneltab>
+            <showfollowlinks>1</showfollowlinks>
+            <showfeedbacklinks>1</showfeedbacklinks>
+            <probeerrors>0</probeerrors>
+            <recommenderrunning>0</recommenderrunning>
+        </tasks>
+    </options>
+    <sensortree>
+        <nodes>
+            <probenode id="1" noaccess="1">
+                <name>Local probe (Local Probe)</name>
+                <group id="2920">
+                    <name>Paessler Servers via Ireland</name>
+                    <id>2920</id>
+                    <url>/group.htm?id=2920</url>
+                    <tags></tags>
+                    <priority>3</priority>
+                    <fixed>0</fixed>
+                    <hascomment>0</hascomment>
+                    <status_raw>3</status_raw>
+                    <active>true</active>
+                    <device id="2921">
+                        <summary>
+
+0,1,0,0,0,0,1,0</summary>
+                        <name>www.paessler.com</name>
+                        <deviceicon>A_Server_1.png</deviceicon>
+                        <id>2921</id>
+                        <url>/device.htm?id=2921</url>
+                        <tags></tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <host>www.paessler.com</host>
+                        <status_raw>3</status_raw>
+                        <active>true</active>
+                        <sensor id="2925">
+                            <name>Downloads USA</name>
+                            <id>2925</id>
+                            <url>/sensor.htm?id=2925</url>
+                            <tags>httpsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>HTTP Advanced</sensortype>
+                            <sensorkind>HTTPAdvanced</sensorkind>
+                            <interval>300</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>[[ Moved permanently! keep inactive (Paused at 06.03.2018 14:49:37 by PRTG System Admin) ]]: Paused by user</statusmessage>
+                            <statussince_raw_utc>43165.5760679861</statussince_raw_utc>
+                            <lasttime_raw_utc>43165.5760679861</lasttime_raw_utc>
+                            <lastok_raw_utc>43164.5482903588</lastok_raw_utc>
+                            <lasterror_raw_utc>43165.5760679861</lasterror_raw_utc>
+                            <lastup_raw_utc>43164.5482903588</lastup_raw_utc>
+                            <lastdown_raw_utc>43165.5760679861</lastdown_raw_utc>
+                            <cumulateddowntime_raw>297943.476999435</cumulateddowntime_raw>
+                            <cumulateduptime_raw>142759935.186012</cumulateduptime_raw>
+                            <cumulatedsince_raw>41483.4259778357</cumulatedsince_raw>
+                            <active>false</active>
+                        </sensor>
+                        <sensor id="2926">
+                            <name>Downloads EU</name>
+                            <id>2926</id>
+                            <url>/sensor.htm?id=2926</url>
+                            <tags>httpsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>HTTP Advanced</sensortype>
+                            <sensorkind>HTTPAdvanced</sensorkind>
+                            <interval>300</interval>
+                            <status_raw>3</status_raw>
+                            <status>Up</status>
+                            <datamode>0</datamode>
+                            <lastvalue>844 msec</lastvalue>
+                            <lastvalue_raw>844.0000</lastvalue_raw>
+                            <statusmessage>OK</statusmessage>
+                            <statussince_raw_utc>43260.9574550116</statussince_raw_utc>
+                            <lasttime_raw_utc>43265.2802066435</lasttime_raw_utc>
+                            <lastok_raw_utc>43265.2802066435</lastok_raw_utc>
+                            <lasterror_raw_utc>43136.8606237153</lasterror_raw_utc>
+                            <lastup_raw_utc>43265.2802066435</lastup_raw_utc>
+                            <lastdown_raw_utc>43131.2920862847</lastdown_raw_utc>
+                            <cumulateddowntime_raw>201196.93900058</cumulateddowntime_raw>
+                            <cumulateduptime_raw>153384021.436038</cumulateduptime_raw>
+                            <cumulatedsince_raw>41483.4259176042</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                    </device>
+                    <device id="2927">
+                        <summary>
+
+0,0,0,0,0,0,1,0</summary>
+                        <name>Firewall 1</name>
+                        <deviceicon>A_Server_1.png</deviceicon>
+                        <id>2927</id>
+                        <url>/device.htm?id=2927</url>
+                        <tags></tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <host>firewall1.paessler.com</host>
+                        <status_raw>3</status_raw>
+                        <active>true</active>
+                        <sensor id="2928">
+                            <name>PING</name>
+                            <id>2928</id>
+                            <url>/sensor.htm?id=2928</url>
+                            <tags>pingsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>Ping</sensortype>
+                            <sensorkind>Ping</sensorkind>
+                            <interval>300</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>[[ demoted (Paused at 25.07.2017 12:56:41 by PRTG System Admin) ]]: Paused by user</statusmessage>
+                            <statussince_raw_utc>42941.4550221759</statussince_raw_utc>
+                            <lasttime_raw_utc>42941.4550221759</lasttime_raw_utc>
+                            <lastok_raw_utc>42941.4510953241</lastok_raw_utc>
+                            <lasterror_raw_utc>42941.4550221759</lasterror_raw_utc>
+                            <lastup_raw_utc>42941.4510953241</lastup_raw_utc>
+                            <lastdown_raw_utc>42941.4550221759</lastdown_raw_utc>
+                            <cumulateddowntime_raw>31658.6049995385</cumulateddowntime_raw>
+                            <cumulateduptime_raw>123670447.221699</cumulateduptime_raw>
+                            <cumulatedsince_raw>41483.4258138657</cumulatedsince_raw>
+                            <active>false</active>
+                        </sensor>
+                    </device>
+                    <device id="14253">
+                        <summary>
+
+0,1,0,0,0,0,0,0</summary>
+                        <name>Sophos</name>
+                        <deviceicon>a_server_1.png</deviceicon>
+                        <id>14253</id>
+                        <url>/device.htm?id=14253</url>
+                        <tags></tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <host>vpn.paessler.com</host>
+                        <status_raw>3</status_raw>
+                        <active>true</active>
+                        <sensor id="14254">
+                            <name>Check Login-Page</name>
+                            <id>14254</id>
+                            <url>/sensor.htm?id=14254</url>
+                            <tags>httpsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>HTTP Advanced</sensortype>
+                            <sensorkind>HTTPAdvanced</sensorkind>
+                            <interval>300</interval>
+                            <status_raw>3</status_raw>
+                            <status>Up</status>
+                            <datamode>0</datamode>
+                            <lastvalue>172 msec</lastvalue>
+                            <lastvalue_raw>172.0000</lastvalue_raw>
+                            <statusmessage>OK</statusmessage>
+                            <statussince_raw_utc>43250.4198645718</statussince_raw_utc>
+                            <lasttime_raw_utc>43265.2772127778</lasttime_raw_utc>
+                            <lastok_raw_utc>43265.2772127778</lastok_raw_utc>
+                            <lasterror_raw_utc>43189.4251675347</lasterror_raw_utc>
+                            <lastup_raw_utc>43265.2772127778</lastup_raw_utc>
+                            <lastdown_raw_utc>43183.2791218982</lastdown_raw_utc>
+                            <cumulateddowntime_raw>11336.2090000184</cumulateddowntime_raw>
+                            <cumulateduptime_raw>34495781.640999</cumulateduptime_raw>
+                            <cumulatedsince_raw>42865.4057893403</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                    </device>
+                    <device id="14265">
+                        <summary>
+
+0,1,0,0,0,0,0,0</summary>
+                        <name>it.skigh.com</name>
+                        <deviceicon>A_Server_1.png</deviceicon>
+                        <id>14265</id>
+                        <url>/device.htm?id=14265</url>
+                        <tags></tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <host>it.skigh.com</host>
+                        <status_raw>3</status_raw>
+                        <active>true</active>
+                        <sensor id="14269">
+                            <name>HTTP Advanced</name>
+                            <id>14269</id>
+                            <url>/sensor.htm?id=14269</url>
+                            <tags>httpsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>HTTP Advanced</sensortype>
+                            <sensorkind>HTTPAdvanced</sensorkind>
+                            <interval>300</interval>
+                            <status_raw>3</status_raw>
+                            <status>Up</status>
+                            <datamode>0</datamode>
+                            <lastvalue>368 msec</lastvalue>
+                            <lastvalue_raw>368.0000</lastvalue_raw>
+                            <statusmessage>OK</statusmessage>
+                            <statussince_raw_utc>43250.4197883796</statussince_raw_utc>
+                            <lasttime_raw_utc>43265.2771340278</lasttime_raw_utc>
+                            <lastok_raw_utc>43265.2771340278</lastok_raw_utc>
+                            <lasterror_raw_utc>43250.3309972338</lasterror_raw_utc>
+                            <lastup_raw_utc>43265.2771340278</lastup_raw_utc>
+                            <lastdown_raw_utc>43250.3309972338</lastdown_raw_utc>
+                            <cumulateddowntime_raw>6807.44200008921</cumulateddowntime_raw>
+                            <cumulateduptime_raw>12658552.8959995</cumulateduptime_raw>
+                            <cumulatedsince_raw>43118.6191113542</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                    </device>
+                </group>
+            </probenode>
+        </nodes>
+    </sensortree>
+</prtg>

@@ -39,7 +39,7 @@ func main() {
 	}
 }
 ```
-[More Example...](https://github.com/haidlir/golang-prtg-api-wrapper/tree/master/example)
+[More Example...](https://github.com/haidlir/golang-prtg-api-wrapper/tree/master/_example)
 
 ## License
 It is released under the MIT license. See

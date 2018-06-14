@@ -67,29 +67,48 @@ type prtgHistoricDataResponse struct {
 // PrtgHistoricData contains historic data param and value for each series.
 type PrtgHistoricData map[string]interface{}
 
-type prtgSensorTreeResponse struct {
-	PrtgVersion      string            `xml:"prtg>prtg-version"`
-	SensorTreeGroups []SensorTreeGroup `xml:"prtg>sensortree>nodes>group id"`
+// PrtgSensorTreeResponse contains parsed xml format of sensor tree API response.
+type PrtgSensorTreeResponse struct {
+	PrtgVersion string                `xml:"prtg-version"`
+	Groups      []SensorTreeGroup     `xml:"sensortree>nodes>group"`
+	ProbeNodes  []SensorTreeProbeNode `xml:"sensortree>nodes>probenode"`
+	Devices     []SensorTreeDevice    `xml:"sensortree>nodes>device"`
+	Sensors     []SensorTreeSensor    `xml:"sensortree>nodes>sensor"`
 }
 
+// SensorTreeGroup contains Group's Tree structure.
 type SensorTreeGroup struct {
-	GroupId           int64              `xml:"id"`
-	GroupName         string             `xml:"name"`
-	GroupTags         string             `xml:"tags"`
-	GroupActive       bool               `xml:"active"`
-	SensorTreeGroups  []SensorTreeGroup  `xml:"probenode>group id"`
-	SensorTreeDevices []SensorTreeDevice `xml:"name"`
+	GroupId     int64                 `xml:"id"`
+	GroupName   string                `xml:"name"`
+	GroupTags   string                `xml:"tags"`
+	GroupActive bool                  `xml:"active"`
+	Groups      []SensorTreeGroup     `xml:"group"`
+	ProbeNodes  []SensorTreeProbeNode `xml:"probenode"`
+	Devices     []SensorTreeDevice    `xml:"device"`
+	Sensors     []SensorTreeSensor    `xml:"sensor"`
 }
 
+// SensorTreeProbeNode contains Probe's Tree structure.
+type SensorTreeProbeNode struct {
+	ProbeId       int64              `xml:"id,attr"`
+	ProbeName     string             `xml:"name"`
+	ProbeNoAccess int64              `xml:"noaccess,attr"`
+	Groups        []SensorTreeGroup  `xml:"group"`
+	Devices       []SensorTreeDevice `xml:"device"`
+	Sensors       []SensorTreeSensor `xml:"sensor"`
+}
+
+// SensorTreeDevice contains Device's Tree structure.
 type SensorTreeDevice struct {
-	DeviceId          int64              `xml:"id"`
-	DeviceName        string             `xml:"name"`
-	DeviceTags        string             `xml:"tags"`
-	DeviceHost        string             `xml:"host"`
-	DeviceActive      bool               `xml:"active"`
-	SensorTreeSensors []SensorTreeSensor `xml:"sensor"`
+	DeviceId     int64              `xml:"id"`
+	DeviceName   string             `xml:"name"`
+	DeviceTags   string             `xml:"tags"`
+	DeviceHost   string             `xml:"host"`
+	DeviceActive bool               `xml:"active"`
+	Sensors      []SensorTreeSensor `xml:"sensor"`
 }
 
+// SensorTreeSensor contains Sensor's Tree structure.
 type SensorTreeSensor struct {
 	SensorId                int64   `xml:"id"`
 	SensorName              string  `xml:"name"`

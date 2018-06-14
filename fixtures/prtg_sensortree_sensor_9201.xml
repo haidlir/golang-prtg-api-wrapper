@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<prtg>
+    <prtg-version>18.2.41.1636</prtg-version>
+    <options>
+        <usertimezone>
+            <bias>-60</bias>
+            <standardbias>0</standardbias>
+            <daylightbias>-60</daylightbias>
+            <standarddatemonth>10</standarddatemonth>
+            <standarddatedayofweek>0</standarddatedayofweek>
+            <standarddateday>5</standarddateday>
+            <standarddatehour>3</standarddatehour>
+            <standarddateminute>0</standarddateminute>
+            <daylightdatemonth>3</daylightdatemonth>
+            <daylightdatedayofweek>0</daylightdatedayofweek>
+            <daylightdateday>5</daylightdateday>
+            <daylightdatehour>2</daylightdatehour>
+            <daylightdateminute>0</daylightdateminute>
+        </usertimezone>
+        <userdatesettings>
+            <shorttimeformat>h:mm AMPM</shorttimeformat>
+            <longtimeformat>h:mm:ss AMPM</longtimeformat>
+            <shortdateformat>M/d/yyyy</shortdateformat>
+            <longdateformat>dddd, MMMM d, yyyy</longdateformat>
+            <dateseparator>/</dateseparator>
+            <timeseparator>:</timeseparator>
+        </userdatesettings>
+        <graphs>
+            <live>240</live>
+            <graph1>2d|5m</graph1>
+            <graph2>30d|1h</graph2>
+            <graph3>365d|1d</graph3>
+        </graphs>
+        <sensortypes>"aggregation=Sensor Factory","businessprocess=Business Process","cloudhttp=Cloud HTTP","cloudping=Cloud Ping","commonsaas=Common SaaS",dns=DNS,"esxserverhealthsensorextern=VMware Host Hardware Status (SOAP)","esxserversensorextern=VMware Host Performance (SOAP)",exe=EXE/Script,"exexml=EXE/Script Advanced",ftp=FTP,http=HTTP,"httpadvanced=HTTP Advanced","httpcontent=HTTP Content","httpdataadvanced=HTTP Data Advanced","httpfull=HTTP Full Web Page","httptransaction=HTTP Transaction","netflow9header=NetFlow V9","netflowcustom=NetFlow V5 (Custom)","netflowheader=NetFlow V5",ping=Ping,port=Port,probe=Probe,"probestate=Probe Health","ptfftpcount=FTP Server File Count","ptfhttpxmlrestvalue=HTTP XML/REST Value","qosroundtrip=QoS (Quality of Service) Round Trip","remotedesktop=RDP (Remote Desktop)",smtp=SMTP,"snifferheader=Packet Sniffer","snmpciscoasavpnconnections=SNMP Cisco ASA VPN Connections","snmpciscoasavpntraffic=SNMP Cisco ASA VPN Traffic","snmpciscoasavpnusers=SNMP Cisco ASA VPN Users","snmpciscocbqos=SNMP Cisco CBQoS","snmpciscosystemhealth=SNMP Cisco System Health","snmpciscoucschassis=SNMP Cisco UCS Chassis","snmpciscoucsphysicaldisk=SNMP Cisco UCS Physical Disk","snmpciscoucssystemhealth=SNMP Cisco UCS System Health","snmpcpu=SNMP CPU Load","snmpcustom=SNMP Custom","snmpcustomadvanced=SNMP Custom Advanced","snmpcustomstring=SNMP Custom String","snmpdellphysicaldisk=SNMP Dell PowerEdge Physical Disk","snmpdellsonicwallsystemhealth=SNMP SonicWall System Health","snmpdellsystemhealth=SNMP Dell PowerEdge System Health","snmpdiskfree=SNMP Disk Free","snmphpmemorycontroller=SNMP HP ProLiant Memory Controller","snmphpsystemhealth=SNMP HP ProLiant System Health","snmpibmlogicaldisk=SNMP IBM System X Logical Disk","snmpibmphysicaldisk=SNMP IBM System X Physical Disk","snmpibmphysicalmemory=SNMP IBM System X Physical Memory","snmpibmsystemhealth=SNMP IBM System X System Health","snmplenovoemcphysicaldisk=SNMP LenovoEMC Physical Disk","snmplenovoemcsystemhealth=SNMP LenovoEMC System Health","snmplibrary=SNMP Library","snmpmemory=SNMP Memory","snmpnetappdiskfree=SNMP NetApp Disk Free","snmpnetappenclosurestatus=SNMP NetApp Enclosure","snmpnetappio=SNMP NetApp I/O","snmpnetappnetworkinterface=SNMP NetApp Network Interface","snmpnetappsystemhealth=SNMP NetApp System Health","snmpqnaplogicaldisk=SNMP QNAP Logical Disk","snmpqnapphysicaldisk=SNMP QNAP Physical Disk","snmpqnapsystemhealth=SNMP QNAP System Health","snmpsynologylogicaldisk=SNMP Synology Logical Disk","snmpsynologyphysicaldisk=SNMP Synology Physical Disk","snmpsynologysystemhealth=SNMP Synology System Health","snmptraffic=SNMP Traffic","snmpuptime=SNMP System Uptime","sshdiskfree=SSH Disk Free","sshinodesfree=SSH INodes Free","sshloadavg=SSH Load Average","sshmeminfo=SSH Meminfo","sshscript=SSH Script","ssl=SSL Security Check","sslcertificate=SSL Certificate Sensor","systemstate=System Health","vcenterserverextern=VMware Virtual Machine (SOAP)","vmwaredatastoreextern=VMware Datastore (SOAP)","wmidiskspace=WMI Free Disk Space (Multi Disk)","wmilogicaldisk=WMI Logical Disk DEPRECATED","wmilogicaldiskv2=WMI Logical Disk I/O BETA","wmimemory=WMI Memory","wminetwork=Windows Network Card","wmipagefile=Windows Pagefile","wmiphysicaldiskv2=Windows Physical Disk I/O BETA","wmiprocess=Windows Process","wmiprocessor=Windows CPU Load","wmiselection=WMI Vital System Data (V1)","wmiuptime=Windows System Uptime","xen6hostsensor=Citrix XenServer Host","xen6vmsensor=Citrix XenServer Virtual Machine"</sensortypes>
+        <usedtags>bandwidthsensor,businessprocess,businessprocesssensor,cbqossensor,certificate,chassis,cisco,ciscocpu,ciscofans,ciscomemory,ciscopowersupply,ciscotemperature,ciscovoltage,cloudsensors,commonsaas,cpu,cpuloadsensor,dell,diskfree,diskspacesensor,dnssensor,factorysensor,firewall.paessler.com,ftpsensor,hp,httpfullsensor,httpsensor,httptransactionsensor,ibm,lenovoemc,logicaldisk,mailsensor,memory,memorycontroller,memorysensor,netapp,netflowsensor,paesslerhomepage,physicaldisk,pingsensor,portsensor,ptfsensor,qnap,saas,smtpsensor,snmp,snmpciscoasavpnconnectionssensor,snmpciscoasavpnsensor,snmpciscoasavpntrafficsensor,snmpciscophysicaldisksensor,snmpciscosystemhealthsensor,snmpdell,snmpdellphysicaldisksensor,snmpdellsystemhealthsensor,snmpdiskfreesensor,snmphp,snmphpmemorycontrollersensor,snmphpsystemhealthsensor,snmpibm,snmpibmlogicaldisksensor,snmpibmphysicaldisksensor,snmpibmphysicalmemorysensor,snmpibmsystemhealthsensor,snmplenovoemc,snmpmemorysensor,snmpnetapp,snmpnetappdiskfreesensor,snmpnetappenclosuresensor,snmpnetappiosensor,snmpnetappnetworkinterfacesensor,snmpnetappsystemhealthsensor,snmpqnap,snmpsonicwallsystemhealthsensor,snmpsynology,snmptrafficsensor,snmpuptimesensor,ssl,sslcertificate,sslsensor,synology,systemhealth,ucs,ucssystemhealth,wmicpuloadsensor,wmilogicalsensor,wmimemorysensor,www.paessler.com</usedtags>
+        <tasks>
+            <autodisco>0</autodisco>
+            <histcalc>0</histcalc>
+            <correlationstatus>0</correlationstatus>
+            <correlationrunning>0</correlationrunning>
+            <autoupdate>0</autoupdate>
+            <maintenance>4710</maintenance>
+            <trialdaysleft>4710</trialdaysleft>
+            <showchanneltab>0</showchanneltab>
+            <showfollowlinks>1</showfollowlinks>
+            <showfeedbacklinks>1</showfeedbacklinks>
+            <probeerrors>0</probeerrors>
+            <recommenderrunning>0</recommenderrunning>
+        </tasks>
+    </options>
+    <sensortree>
+        <nodes>
+            <sensor id="9201">
+                <name>CBQoS DATA-FILETRANSFER (matchAny) (Main Interface:2 output)[Class Map]</name>
+                <id>9201</id>
+                <url>/sensor.htm?id=9201</url>
+                <tags>cbqossensor</tags>
+                <priority>3</priority>
+                <fixed>0</fixed>
+                <hascomment>0</hascomment>
+                <sensortype>SNMP Cisco CBQoS</sensortype>
+                <sensorkind>SNMPCiscoCBQoS</sensorkind>
+                <interval>60</interval>
+                <status_raw>7</status_raw>
+                <status>Paused</status>
+                <datamode>2</datamode>
+                <lastvalue>-</lastvalue>
+                <lastvalue_raw></lastvalue_raw>
+                <statusmessage>Paused by parent</statusmessage>
+                <statussince_raw_utc>42782.4447547917</statussince_raw_utc>
+                <lasttime_raw_utc>42782.4447547917</lasttime_raw_utc>
+                <lastok_raw_utc>42718.3566754977</lastok_raw_utc>
+                <lasterror_raw_utc>42782.4447547917</lasterror_raw_utc>
+                <lastup_raw_utc>42718.3566754977</lastup_raw_utc>
+                <lastdown_raw_utc>42782.4440602431</lastdown_raw_utc>
+                <cumulateddowntime_raw>5553588.49300048</cumulateddowntime_raw>
+                <cumulateduptime_raw>42945958.5300405</cumulateduptime_raw>
+                <cumulatedsince_raw>42220.5799775</cumulatedsince_raw>
+                <active>true</active>
+            </sensor>
+        </nodes>
+    </sensortree>
+</prtg>

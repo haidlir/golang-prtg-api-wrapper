@@ -1,0 +1,1684 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<prtg>
+    <prtg-version>18.2.41.1636</prtg-version>
+    <options>
+        <usertimezone>
+            <bias>-60</bias>
+            <standardbias>0</standardbias>
+            <daylightbias>-60</daylightbias>
+            <standarddatemonth>10</standarddatemonth>
+            <standarddatedayofweek>0</standarddatedayofweek>
+            <standarddateday>5</standarddateday>
+            <standarddatehour>3</standarddatehour>
+            <standarddateminute>0</standarddateminute>
+            <daylightdatemonth>3</daylightdatemonth>
+            <daylightdatedayofweek>0</daylightdatedayofweek>
+            <daylightdateday>5</daylightdateday>
+            <daylightdatehour>2</daylightdatehour>
+            <daylightdateminute>0</daylightdateminute>
+        </usertimezone>
+        <userdatesettings>
+            <shorttimeformat>h:mm AMPM</shorttimeformat>
+            <longtimeformat>h:mm:ss AMPM</longtimeformat>
+            <shortdateformat>M/d/yyyy</shortdateformat>
+            <longdateformat>dddd, MMMM d, yyyy</longdateformat>
+            <dateseparator>/</dateseparator>
+            <timeseparator>:</timeseparator>
+        </userdatesettings>
+        <graphs>
+            <live>240</live>
+            <graph1>2d|5m</graph1>
+            <graph2>30d|1h</graph2>
+            <graph3>365d|1d</graph3>
+        </graphs>
+        <sensortypes>"aggregation=Sensor Factory","businessprocess=Business Process","cloudhttp=Cloud HTTP","cloudping=Cloud Ping","commonsaas=Common SaaS",dns=DNS,"esxserverhealthsensorextern=VMware Host Hardware Status (SOAP)","esxserversensorextern=VMware Host Performance (SOAP)",exe=EXE/Script,"exexml=EXE/Script Advanced",ftp=FTP,http=HTTP,"httpadvanced=HTTP Advanced","httpcontent=HTTP Content","httpdataadvanced=HTTP Data Advanced","httpfull=HTTP Full Web Page","httptransaction=HTTP Transaction","netflow9header=NetFlow V9","netflowcustom=NetFlow V5 (Custom)","netflowheader=NetFlow V5",ping=Ping,port=Port,probe=Probe,"probestate=Probe Health","ptfftpcount=FTP Server File Count","ptfhttpxmlrestvalue=HTTP XML/REST Value","qosroundtrip=QoS (Quality of Service) Round Trip","remotedesktop=RDP (Remote Desktop)",smtp=SMTP,"snifferheader=Packet Sniffer","snmpciscoasavpnconnections=SNMP Cisco ASA VPN Connections","snmpciscoasavpntraffic=SNMP Cisco ASA VPN Traffic","snmpciscoasavpnusers=SNMP Cisco ASA VPN Users","snmpciscocbqos=SNMP Cisco CBQoS","snmpciscosystemhealth=SNMP Cisco System Health","snmpciscoucschassis=SNMP Cisco UCS Chassis","snmpciscoucsphysicaldisk=SNMP Cisco UCS Physical Disk","snmpciscoucssystemhealth=SNMP Cisco UCS System Health","snmpcpu=SNMP CPU Load","snmpcustom=SNMP Custom","snmpcustomadvanced=SNMP Custom Advanced","snmpcustomstring=SNMP Custom String","snmpdellphysicaldisk=SNMP Dell PowerEdge Physical Disk","snmpdellsonicwallsystemhealth=SNMP SonicWall System Health","snmpdellsystemhealth=SNMP Dell PowerEdge System Health","snmpdiskfree=SNMP Disk Free","snmphpmemorycontroller=SNMP HP ProLiant Memory Controller","snmphpsystemhealth=SNMP HP ProLiant System Health","snmpibmlogicaldisk=SNMP IBM System X Logical Disk","snmpibmphysicaldisk=SNMP IBM System X Physical Disk","snmpibmphysicalmemory=SNMP IBM System X Physical Memory","snmpibmsystemhealth=SNMP IBM System X System Health","snmplenovoemcphysicaldisk=SNMP LenovoEMC Physical Disk","snmplenovoemcsystemhealth=SNMP LenovoEMC System Health","snmplibrary=SNMP Library","snmpmemory=SNMP Memory","snmpnetappdiskfree=SNMP NetApp Disk Free","snmpnetappenclosurestatus=SNMP NetApp Enclosure","snmpnetappio=SNMP NetApp I/O","snmpnetappnetworkinterface=SNMP NetApp Network Interface","snmpnetappsystemhealth=SNMP NetApp System Health","snmpqnaplogicaldisk=SNMP QNAP Logical Disk","snmpqnapphysicaldisk=SNMP QNAP Physical Disk","snmpqnapsystemhealth=SNMP QNAP System Health","snmpsynologylogicaldisk=SNMP Synology Logical Disk","snmpsynologyphysicaldisk=SNMP Synology Physical Disk","snmpsynologysystemhealth=SNMP Synology System Health","snmptraffic=SNMP Traffic","snmpuptime=SNMP System Uptime","sshdiskfree=SSH Disk Free","sshinodesfree=SSH INodes Free","sshloadavg=SSH Load Average","sshmeminfo=SSH Meminfo","sshscript=SSH Script","ssl=SSL Security Check","sslcertificate=SSL Certificate Sensor","systemstate=System Health","vcenterserverextern=VMware Virtual Machine (SOAP)","vmwaredatastoreextern=VMware Datastore (SOAP)","wmidiskspace=WMI Free Disk Space (Multi Disk)","wmilogicaldisk=WMI Logical Disk DEPRECATED","wmilogicaldiskv2=WMI Logical Disk I/O BETA","wmimemory=WMI Memory","wminetwork=Windows Network Card","wmipagefile=Windows Pagefile","wmiphysicaldiskv2=Windows Physical Disk I/O BETA","wmiprocess=Windows Process","wmiprocessor=Windows CPU Load","wmiselection=WMI Vital System Data (V1)","wmiuptime=Windows System Uptime","xen6hostsensor=Citrix XenServer Host","xen6vmsensor=Citrix XenServer Virtual Machine"</sensortypes>
+        <usedtags>bandwidthsensor,businessprocess,businessprocesssensor,cbqossensor,certificate,chassis,cisco,ciscocpu,ciscofans,ciscomemory,ciscopowersupply,ciscotemperature,ciscovoltage,cloudsensors,commonsaas,cpu,cpuloadsensor,dell,diskfree,diskspacesensor,dnssensor,factorysensor,firewall.paessler.com,ftpsensor,hp,httpfullsensor,httpsensor,httptransactionsensor,ibm,lenovoemc,logicaldisk,mailsensor,memory,memorycontroller,memorysensor,netapp,netflowsensor,paesslerhomepage,physicaldisk,pingsensor,portsensor,ptfsensor,qnap,saas,smtpsensor,snmp,snmpciscoasavpnconnectionssensor,snmpciscoasavpnsensor,snmpciscoasavpntrafficsensor,snmpciscophysicaldisksensor,snmpciscosystemhealthsensor,snmpdell,snmpdellphysicaldisksensor,snmpdellsystemhealthsensor,snmpdiskfreesensor,snmphp,snmphpmemorycontrollersensor,snmphpsystemhealthsensor,snmpibm,snmpibmlogicaldisksensor,snmpibmphysicaldisksensor,snmpibmphysicalmemorysensor,snmpibmsystemhealthsensor,snmplenovoemc,snmpmemorysensor,snmpnetapp,snmpnetappdiskfreesensor,snmpnetappenclosuresensor,snmpnetappiosensor,snmpnetappnetworkinterfacesensor,snmpnetappsystemhealthsensor,snmpqnap,snmpsonicwallsystemhealthsensor,snmpsynology,snmptrafficsensor,snmpuptimesensor,ssl,sslcertificate,sslsensor,synology,systemhealth,ucs,ucssystemhealth,wmicpuloadsensor,wmilogicalsensor,wmimemorysensor,www.paessler.com</usedtags>
+        <tasks>
+            <autodisco>0</autodisco>
+            <histcalc>0</histcalc>
+            <correlationstatus>0</correlationstatus>
+            <correlationrunning>0</correlationrunning>
+            <autoupdate>0</autoupdate>
+            <maintenance>4710</maintenance>
+            <trialdaysleft>4710</trialdaysleft>
+            <showchanneltab>0</showchanneltab>
+            <showfollowlinks>1</showfollowlinks>
+            <showfeedbacklinks>1</showfeedbacklinks>
+            <probeerrors>0</probeerrors>
+            <recommenderrunning>0</recommenderrunning>
+        </tasks>
+    </options>
+    <sensortree>
+        <nodes>
+            <group id="9178">
+                <name>Network</name>
+                <id>9178</id>
+                <url>/group.htm?id=9178</url>
+                <tags></tags>
+                <priority>3</priority>
+                <fixed>0</fixed>
+                <hascomment>0</hascomment>
+                <status_raw>3</status_raw>
+                <active>true</active>
+                <device id="9200">
+                    <summary>0,0,0,0,0,0,7,0</summary>
+                    <name>Cisco CBQoS</name>
+                    <deviceicon>vendors_cisco.png</deviceicon>
+                    <id>9200</id>
+                    <url>/device.htm?id=9200</url>
+                    <tags>cisco</tags>
+                    <priority>3</priority>
+                    <fixed>0</fixed>
+                    <hascomment>0</hascomment>
+                    <host>IrelandSmallProbeprtgpaesslercom</host>
+                    <status_raw>7</status_raw>
+                    <active>false</active>
+                    <sensor id="9201">
+                        <name>CBQoS DATA-FILETRANSFER (matchAny) (Main Interface:2 output)[Class Map]</name>
+                        <id>9201</id>
+                        <url>/sensor.htm?id=9201</url>
+                        <tags>cbqossensor</tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <sensortype>SNMP Cisco CBQoS</sensortype>
+                        <sensorkind>SNMPCiscoCBQoS</sensorkind>
+                        <interval>60</interval>
+                        <status_raw>7</status_raw>
+                        <status>Paused</status>
+                        <datamode>2</datamode>
+                        <lastvalue>-</lastvalue>
+                        <lastvalue_raw></lastvalue_raw>
+                        <statusmessage>Paused by parent</statusmessage>
+                        <statussince_raw_utc>42782.4447547917</statussince_raw_utc>
+                        <lasttime_raw_utc>42782.4447547917</lasttime_raw_utc>
+                        <lastok_raw_utc>42718.3566754977</lastok_raw_utc>
+                        <lasterror_raw_utc>42782.4447547917</lasterror_raw_utc>
+                        <lastup_raw_utc>42718.3566754977</lastup_raw_utc>
+                        <lastdown_raw_utc>42782.4440602431</lastdown_raw_utc>
+                        <cumulateddowntime_raw>5553588.49300048</cumulateddowntime_raw>
+                        <cumulateduptime_raw>42945958.5300405</cumulateduptime_raw>
+                        <cumulatedsince_raw>42220.5799775</cumulatedsince_raw>
+                        <active>true</active>
+                    </sensor>
+                    <sensor id="9203">
+                        <name>CBQoS Match protocol ftp (Main Interface:2 output)[Match Statement]</name>
+                        <id>9203</id>
+                        <url>/sensor.htm?id=9203</url>
+                        <tags>cbqossensor</tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <sensortype>SNMP Cisco CBQoS</sensortype>
+                        <sensorkind>SNMPCiscoCBQoS</sensorkind>
+                        <interval>60</interval>
+                        <status_raw>7</status_raw>
+                        <status>Paused</status>
+                        <datamode>2</datamode>
+                        <lastvalue>-</lastvalue>
+                        <lastvalue_raw></lastvalue_raw>
+                        <statusmessage>Paused by parent</statusmessage>
+                        <statussince_raw_utc>42782.4447315278</statussince_raw_utc>
+                        <lasttime_raw_utc>42782.4447315278</lasttime_raw_utc>
+                        <lastok_raw_utc>42718.3566523843</lastok_raw_utc>
+                        <lasterror_raw_utc>42782.4447315278</lasterror_raw_utc>
+                        <lastup_raw_utc>42718.3566523843</lastup_raw_utc>
+                        <lastdown_raw_utc>42782.4447315278</lastdown_raw_utc>
+                        <cumulateddowntime_raw>5553708.43600058</cumulateddowntime_raw>
+                        <cumulateduptime_raw>42946139.6780297</cumulateduptime_raw>
+                        <cumulatedsince_raw>42220.581493831</cumulatedsince_raw>
+                        <active>true</active>
+                    </sensor>
+                    <sensor id="9204">
+                        <name>CBQoS Match protocol netbios (Main Interface:2 output)[Match Statement]</name>
+                        <id>9204</id>
+                        <url>/sensor.htm?id=9204</url>
+                        <tags>cbqossensor</tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <sensortype>SNMP Cisco CBQoS</sensortype>
+                        <sensorkind>SNMPCiscoCBQoS</sensorkind>
+                        <interval>60</interval>
+                        <status_raw>7</status_raw>
+                        <status>Paused</status>
+                        <datamode>2</datamode>
+                        <lastvalue>-</lastvalue>
+                        <lastvalue_raw></lastvalue_raw>
+                        <statusmessage>Paused by parent</statusmessage>
+                        <statussince_raw_utc>42782.4447201389</statussince_raw_utc>
+                        <lasttime_raw_utc>42782.4447201389</lasttime_raw_utc>
+                        <lastok_raw_utc>42718.3566409607</lastok_raw_utc>
+                        <lasterror_raw_utc>42782.4447201389</lasterror_raw_utc>
+                        <lastup_raw_utc>42718.3566409607</lastup_raw_utc>
+                        <lastdown_raw_utc>42782.4447201389</lastdown_raw_utc>
+                        <cumulateddowntime_raw>5553708.28200134</cumulateddowntime_raw>
+                        <cumulateduptime_raw>42946380.8950315</cumulateduptime_raw>
+                        <cumulatedsince_raw>42220.5815517014</cumulatedsince_raw>
+                        <active>true</active>
+                    </sensor>
+                    <sensor id="9207">
+                        <name>CBQoS Match protocol nfs (Main Interface:2 output)[Match Statement]</name>
+                        <id>9207</id>
+                        <url>/sensor.htm?id=9207</url>
+                        <tags>cbqossensor</tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <sensortype>SNMP Cisco CBQoS</sensortype>
+                        <sensorkind>SNMPCiscoCBQoS</sensorkind>
+                        <interval>60</interval>
+                        <status_raw>7</status_raw>
+                        <status>Paused</status>
+                        <datamode>2</datamode>
+                        <lastvalue>-</lastvalue>
+                        <lastvalue_raw></lastvalue_raw>
+                        <statusmessage>Paused by parent</statusmessage>
+                        <statussince_raw_utc>42782.4446852431</statussince_raw_utc>
+                        <lasttime_raw_utc>42782.4446852431</lasttime_raw_utc>
+                        <lastok_raw_utc>42718.3566060532</lastok_raw_utc>
+                        <lasterror_raw_utc>42782.4446852431</lasterror_raw_utc>
+                        <lastup_raw_utc>42718.3566060532</lastup_raw_utc>
+                        <lastdown_raw_utc>42782.4446852431</lastdown_raw_utc>
+                        <cumulateddowntime_raw>5553824.23499906</cumulateddowntime_raw>
+                        <cumulateduptime_raw>42947334.9390219</cumulateduptime_raw>
+                        <cumulatedsince_raw>42220.5817253704</cumulatedsince_raw>
+                        <active>true</active>
+                    </sensor>
+                    <sensor id="9206">
+                        <name>CBQoS Match protocol samba (Main Interface:2 output)[Match Statement]</name>
+                        <id>9206</id>
+                        <url>/sensor.htm?id=9206</url>
+                        <tags>cbqossensor</tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <sensortype>SNMP Cisco CBQoS</sensortype>
+                        <sensorkind>SNMPCiscoCBQoS</sensorkind>
+                        <interval>60</interval>
+                        <status_raw>7</status_raw>
+                        <status>Paused</status>
+                        <datamode>2</datamode>
+                        <lastvalue>-</lastvalue>
+                        <lastvalue_raw></lastvalue_raw>
+                        <statusmessage>Paused by parent</statusmessage>
+                        <statussince_raw_utc>42782.4446968056</statussince_raw_utc>
+                        <lasttime_raw_utc>42782.4446968056</lasttime_raw_utc>
+                        <lastok_raw_utc>42718.3566176389</lastok_raw_utc>
+                        <lasterror_raw_utc>42782.4446968056</lasterror_raw_utc>
+                        <lastup_raw_utc>42718.3566176389</lastup_raw_utc>
+                        <lastdown_raw_utc>42782.4446968056</lastdown_raw_utc>
+                        <cumulateddowntime_raw>5553708.6759994</cumulateddowntime_raw>
+                        <cumulateduptime_raw>42947154.8140516</cumulateduptime_raw>
+                        <cumulatedsince_raw>42220.5816674421</cumulatedsince_raw>
+                        <active>true</active>
+                    </sensor>
+                    <sensor id="9205">
+                        <name>CBQoS Match protocol secure-ftp (Main Interface:2 output)[Match Statement]</name>
+                        <id>9205</id>
+                        <url>/sensor.htm?id=9205</url>
+                        <tags>cbqossensor</tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <sensortype>SNMP Cisco CBQoS</sensortype>
+                        <sensorkind>SNMPCiscoCBQoS</sensorkind>
+                        <interval>60</interval>
+                        <status_raw>7</status_raw>
+                        <status>Paused</status>
+                        <datamode>2</datamode>
+                        <lastvalue>-</lastvalue>
+                        <lastvalue_raw></lastvalue_raw>
+                        <statusmessage>Paused by parent</statusmessage>
+                        <statussince_raw_utc>42782.4447085648</statussince_raw_utc>
+                        <lasttime_raw_utc>42782.4447085648</lasttime_raw_utc>
+                        <lastok_raw_utc>42718.3566292477</lastok_raw_utc>
+                        <lasterror_raw_utc>42782.4447085648</lasterror_raw_utc>
+                        <lastup_raw_utc>42718.3566292477</lastup_raw_utc>
+                        <lastdown_raw_utc>42782.4447085648</lastdown_raw_utc>
+                        <cumulateddowntime_raw>5553768.41599925</cumulateddowntime_raw>
+                        <cumulateduptime_raw>42946741.2770281</cumulateduptime_raw>
+                        <cumulatedsince_raw>42220.5816095718</cumulatedsince_raw>
+                        <active>true</active>
+                    </sensor>
+                    <sensor id="9202">
+                        <name>CBQoS Match protocol ssh (Main Interface:2 output)[Match Statement]</name>
+                        <id>9202</id>
+                        <url>/sensor.htm?id=9202</url>
+                        <tags>cbqossensor</tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <sensortype>SNMP Cisco CBQoS</sensortype>
+                        <sensorkind>SNMPCiscoCBQoS</sensorkind>
+                        <interval>60</interval>
+                        <status_raw>7</status_raw>
+                        <status>Paused</status>
+                        <datamode>2</datamode>
+                        <lastvalue>-</lastvalue>
+                        <lastvalue_raw></lastvalue_raw>
+                        <statusmessage>Paused by parent</statusmessage>
+                        <statussince_raw_utc>42782.444743287</statussince_raw_utc>
+                        <lasttime_raw_utc>42782.444743287</lasttime_raw_utc>
+                        <lastok_raw_utc>42718.3566639236</lastok_raw_utc>
+                        <lasterror_raw_utc>42782.444743287</lasterror_raw_utc>
+                        <lastup_raw_utc>42718.3566639236</lastup_raw_utc>
+                        <lastdown_raw_utc>42782.444743287</lastdown_raw_utc>
+                        <cumulateddowntime_raw>5553648.3170002</cumulateddowntime_raw>
+                        <cumulateduptime_raw>42945958.9650325</cumulateduptime_raw>
+                        <cumulatedsince_raw>42220.5814359606</cumulatedsince_raw>
+                        <active>true</active>
+                    </sensor>
+                </device>
+                <group id="9217">
+                    <name>Firewalls</name>
+                    <id>9217</id>
+                    <url>/group.htm?id=9217</url>
+                    <tags></tags>
+                    <priority>3</priority>
+                    <fixed>0</fixed>
+                    <hascomment>0</hascomment>
+                    <status_raw>3</status_raw>
+                    <active>true</active>
+                    <device id="9179">
+                        <summary>2,1,0,0,0,0,0,0</summary>
+                        <name>Firewall</name>
+                        <deviceicon>device_firewall.png</deviceicon>
+                        <id>9179</id>
+                        <url>/device.htm?id=9179</url>
+                        <tags></tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <host>IrelandSmallProbeprtgpaesslercom</host>
+                        <status_raw>3</status_raw>
+                        <active>true</active>
+                        <sensor id="9180">
+                            <name>Availability (Ping)</name>
+                            <id>9180</id>
+                            <url>/sensor.htm?id=9180</url>
+                            <tags>pingsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>Ping</sensortype>
+                            <sensorkind>Ping</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>3</status_raw>
+                            <status>Up</status>
+                            <datamode>0</datamode>
+                            <lastvalue>0 msec</lastvalue>
+                            <lastvalue_raw>0.0000</lastvalue_raw>
+                            <statusmessage>OK</statusmessage>
+                            <statussince_raw_utc>43265.1120376273</statussince_raw_utc>
+                            <lasttime_raw_utc>43265.1314827315</lasttime_raw_utc>
+                            <lastok_raw_utc>43265.1314827315</lastok_raw_utc>
+                            <lasterror_raw_utc>0</lasterror_raw_utc>
+                            <lastup_raw_utc>43265.1314827315</lastup_raw_utc>
+                            <lastdown_raw_utc>0</lastdown_raw_utc>
+                            <cumulateddowntime_raw>0</cumulateddowntime_raw>
+                            <cumulateduptime_raw>90074556.5983287</cumulateduptime_raw>
+                            <cumulatedsince_raw>42220.3958958102</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9181">
+                            <name>NetFlow V5 (Custom)</name>
+                            <id>9181</id>
+                            <url>/sensor.htm?id=9181</url>
+                            <tags>bandwidthsensor netflowsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>NetFlow V5 (Custom)</sensortype>
+                            <sensorkind>NetFlowCustom</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>1</status_raw>
+                            <status>Unknown</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>No data since 6/23/2017 9:55:00 AM</statusmessage>
+                            <statussince_raw_utc>42909.3298611111</statussince_raw_utc>
+                            <lasttime_raw_utc>42909.3298611111</lasttime_raw_utc>
+                            <lastok_raw_utc>42909.3298611111</lastok_raw_utc>
+                            <lasterror_raw_utc>0</lasterror_raw_utc>
+                            <lastup_raw_utc>42909.3298611111</lastup_raw_utc>
+                            <lastdown_raw_utc>0</lastdown_raw_utc>
+                            <cumulateddowntime_raw>0</cumulateddowntime_raw>
+                            <cumulateduptime_raw>2052660.00000027</cumulateduptime_raw>
+                            <cumulatedsince_raw>42885.4159722222</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9182">
+                            <name>NetFlow V5 1</name>
+                            <id>9182</id>
+                            <url>/sensor.htm?id=9182</url>
+                            <tags>bandwidthsensor netflowsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>NetFlow V5</sensortype>
+                            <sensorkind>NetFlowHeader</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>1</status_raw>
+                            <status>Unknown</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>No data since 6/23/2017 9:55:00 AM</statusmessage>
+                            <statussince_raw_utc>42909.3298611111</statussince_raw_utc>
+                            <lasttime_raw_utc>42909.3298611111</lasttime_raw_utc>
+                            <lastok_raw_utc>42909.3298611111</lastok_raw_utc>
+                            <lasterror_raw_utc>0</lasterror_raw_utc>
+                            <lastup_raw_utc>42909.3298611111</lastup_raw_utc>
+                            <lastdown_raw_utc>0</lastdown_raw_utc>
+                            <cumulateddowntime_raw>0</cumulateddowntime_raw>
+                            <cumulateduptime_raw>2052480.00000031</cumulateduptime_raw>
+                            <cumulatedsince_raw>42885.4159722222</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                    </device>
+                    <device id="9215">
+                        <summary>0,0,0,0,0,0,1,0</summary>
+                        <name>Dell Sonicwall</name>
+                        <deviceicon>device_firewall.png</deviceicon>
+                        <id>9215</id>
+                        <url>/device.htm?id=9215</url>
+                        <tags></tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <host>IrelandSmallProbeprtgpaesslercom</host>
+                        <status_raw>7</status_raw>
+                        <active>false</active>
+                        <sensor id="9216">
+                            <name>SonicWALL System Health</name>
+                            <id>9216</id>
+                            <url>/sensor.htm?id=9216</url>
+                            <tags>snmpsonicwallsystemhealthsensor systemhealth</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP SonicWall System Health</sensortype>
+                            <sensorkind>SNMPDellSonicWallSystemHealth</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4448471991</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4448471991</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3568606713</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4448471991</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3568606713</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4448471991</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553323.39800091</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42870133.2530209</cumulateduptime_raw>
+                            <cumulatedsince_raw>42221.4721126042</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                    </device>
+                    <device id="9301">
+                        <summary>0,0,0,0,0,0,11,0</summary>
+                        <name>Cisco ASA</name>
+                        <deviceicon>vendors_cisco.png</deviceicon>
+                        <id>9301</id>
+                        <url>/device.htm?id=9301</url>
+                        <tags></tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <host>IrelandSmallProbeprtgpaesslercom</host>
+                        <status_raw>7</status_raw>
+                        <active>false</active>
+                        <sensor id="9302">
+                            <name>Ping</name>
+                            <id>9302</id>
+                            <url>/sensor.htm?id=9302</url>
+                            <tags>pingsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>Ping</sensortype>
+                            <sensorkind>Ping</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4447217824</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4447217824</lasttime_raw_utc>
+                            <lastok_raw_utc>42782.4447217824</lastok_raw_utc>
+                            <lasterror_raw_utc>0</lasterror_raw_utc>
+                            <lastup_raw_utc>42782.4447217824</lastup_raw_utc>
+                            <lastdown_raw_utc>0</lastdown_raw_utc>
+                            <cumulateddowntime_raw>0</cumulateddowntime_raw>
+                            <cumulateduptime_raw>48346574.5270374</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3696877083</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9304">
+                            <name>SNMP Cisco ASA VPN to Andreas</name>
+                            <id>9304</id>
+                            <url>/sensor.htm?id=9304</url>
+                            <tags>snmpciscoasavpnsensor snmpciscoasavpntrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP Cisco ASA VPN Traffic</sensortype>
+                            <sensorkind>SNMPCiscoASAVPNTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4447777662</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4447777662</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3566986921</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4447777662</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3566986921</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4447777662</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553483.27599927</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42791145.1080186</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3706245139</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9305">
+                            <name>SNMP Cisco ASA VPN to ATimms</name>
+                            <id>9305</id>
+                            <url>/sensor.htm?id=9305</url>
+                            <tags>snmpciscoasavpnsensor snmpciscoasavpntrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP Cisco ASA VPN Traffic</sensortype>
+                            <sensorkind>SNMPCiscoASAVPNTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4447661806</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4447661806</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3566871528</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4447661806</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3566871528</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4447661806</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553483.22999896</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42791254.7590187</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3706343403</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9303">
+                            <name>SNMP Cisco ASA VPN to BDay</name>
+                            <id>9303</id>
+                            <url>/sensor.htm?id=9303</url>
+                            <tags>snmpciscoasavpnsensor snmpciscoasavpntrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP Cisco ASA VPN Traffic</sensortype>
+                            <sensorkind>SNMPCiscoASAVPNTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.44445375</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.44445375</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3567102546</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.44445375</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3567102546</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.44445375</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553423.35300089</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42790961.2170258</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3706156134</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9306">
+                            <name>SNMP Cisco ASA VPN Connections</name>
+                            <id>9306</id>
+                            <url>/sensor.htm?id=9306</url>
+                            <tags>snmpciscoasavpnsensor snmpciscoasavpnconnectionssensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP Cisco ASA VPN Connections</sensortype>
+                            <sensorkind>SNMPCiscoASAVPNConnections</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4444772685</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4444772685</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3567333565</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4444772685</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3567333565</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4444772685</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553423.62100009</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42792653.7570201</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3706470139</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9307">
+                            <name>SNMP Cisco ASA VPN Users</name>
+                            <id>9307</id>
+                            <url>/sensor.htm?id=9307</url>
+                            <tags>snmpciscoasavpnsensor snmpciscoasavpntrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP Cisco ASA VPN Users</sensortype>
+                            <sensorkind>SNMPCiscoASAVPNUsers</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>0</statussince_raw_utc>
+                            <lasttime_raw_utc>0</lasttime_raw_utc>
+                            <lastok_raw_utc>0</lastok_raw_utc>
+                            <lasterror_raw_utc>0</lasterror_raw_utc>
+                            <lastup_raw_utc>0</lastup_raw_utc>
+                            <lastdown_raw_utc>0</lastdown_raw_utc>
+                            <cumulateddowntime_raw>0</cumulateddowntime_raw>
+                            <cumulateduptime_raw>0</cumulateduptime_raw>
+                            <cumulatedsince_raw>0</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9308">
+                            <name>System Health CPU</name>
+                            <id>9308</id>
+                            <url>/sensor.htm?id=9308</url>
+                            <tags>snmpciscosystemhealthsensor systemhealth ciscocpu cpuloadsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP Cisco System Health</sensortype>
+                            <sensorkind>SNMPCiscoSystemHealth</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4449980787</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4449980787</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3570227315</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4449980787</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3570227315</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4443035301</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553423.40099965</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42793168.358004</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3723231597</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9309">
+                            <name>System Health Memory</name>
+                            <id>9309</id>
+                            <url>/sensor.htm?id=9309</url>
+                            <tags>snmpciscosystemhealthsensor systemhealth ciscomemory memorysensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP Cisco System Health</sensortype>
+                            <sensorkind>SNMPCiscoSystemHealth</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4449862731</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4449862731</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3570111458</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4449862731</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3570111458</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.444291713</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553363.35200053</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42792733.0500355</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3723347338</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9310">
+                            <name>(003) Adaptive Security Appliance &#39;EXTERN&#39; interface</name>
+                            <id>9310</id>
+                            <url>/sensor.htm?id=9310</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4448471991</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4448471991</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3570343171</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4448471991</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3570343171</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4448471991</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553408.36700166</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42791647.6660211</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3733312731</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9311">
+                            <name>(004) Adaptive Security Appliance &#39;INTERN&#39; interface</name>
+                            <id>9311</id>
+                            <url>/sensor.htm?id=9311</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4448358102</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4448358102</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3570227315</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4448358102</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3570227315</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4448358102</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553408.25600033</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42791820.618018</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3733312731</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9312">
+                            <name>(005) Adaptive Security Appliance &#39;DMZ&#39; interface</name>
+                            <id>9312</id>
+                            <url>/sensor.htm?id=9312</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4448242361</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4448242361</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3570111458</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4448242361</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3570111458</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4448242361</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553408.22300036</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42792061.6560326</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3733312731</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                    </device>
+                </group>
+                <group id="9313">
+                    <name>Switches</name>
+                    <id>9313</id>
+                    <url>/group.htm?id=9313</url>
+                    <tags></tags>
+                    <priority>3</priority>
+                    <fixed>0</fixed>
+                    <hascomment>0</hascomment>
+                    <status_raw>3</status_raw>
+                    <active>true</active>
+                    <device id="9314">
+                        <summary>0,0,0,0,0,0,6,0</summary>
+                        <name>Cisco Switch</name>
+                        <deviceicon>vendors_cisco.png</deviceicon>
+                        <id>9314</id>
+                        <url>/device.htm?id=9314</url>
+                        <tags></tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <host>IrelandSmallProbeprtgpaesslercom</host>
+                        <status_raw>7</status_raw>
+                        <active>false</active>
+                        <sensor id="9315">
+                            <name>System Health CPU</name>
+                            <id>9315</id>
+                            <url>/sensor.htm?id=9315</url>
+                            <tags>snmpciscosystemhealthsensor systemhealth ciscocpu cpuloadsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP Cisco System Health</sensortype>
+                            <sensorkind>SNMPCiscoSystemHealth</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4449745139</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4449745139</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3569996296</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4449745139</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3569996296</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4449745139</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553423.42299963</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42791425.8240288</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3788554398</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9317">
+                            <name>System Health Fans</name>
+                            <id>9317</id>
+                            <url>/sensor.htm?id=9317</url>
+                            <tags>snmpciscosystemhealthsensor systemhealth ciscofans</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP Cisco System Health</sensortype>
+                            <sensorkind>SNMPCiscoSystemHealth</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>43250.4184337037</statussince_raw_utc>
+                            <lasttime_raw_utc>0</lasttime_raw_utc>
+                            <lastok_raw_utc>0</lastok_raw_utc>
+                            <lasterror_raw_utc>0</lasterror_raw_utc>
+                            <lastup_raw_utc>0</lastup_raw_utc>
+                            <lastdown_raw_utc>0</lastdown_raw_utc>
+                            <cumulateddowntime_raw>0</cumulateddowntime_raw>
+                            <cumulateduptime_raw>0</cumulateduptime_raw>
+                            <cumulatedsince_raw>0</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9319">
+                            <name>System Health Memory</name>
+                            <id>9319</id>
+                            <url>/sensor.htm?id=9319</url>
+                            <tags>snmpciscosystemhealthsensor systemhealth ciscomemory memorysensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP Cisco System Health</sensortype>
+                            <sensorkind>SNMPCiscoSystemHealth</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4449399768</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4449399768</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3569532639</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4449399768</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3569532639</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4449399768</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553363.27699968</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42792325.9270307</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.378855544</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9318">
+                            <name>System Health Power Supplies</name>
+                            <id>9318</id>
+                            <url>/sensor.htm?id=9318</url>
+                            <tags>snmpciscosystemhealthsensor systemhealth ciscopowersupply</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP Cisco System Health</sensortype>
+                            <sensorkind>SNMPCiscoSystemHealth</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>0</statussince_raw_utc>
+                            <lasttime_raw_utc>0</lasttime_raw_utc>
+                            <lastok_raw_utc>0</lastok_raw_utc>
+                            <lasterror_raw_utc>0</lasterror_raw_utc>
+                            <lastup_raw_utc>0</lastup_raw_utc>
+                            <lastdown_raw_utc>0</lastdown_raw_utc>
+                            <cumulateddowntime_raw>0</cumulateddowntime_raw>
+                            <cumulateduptime_raw>0</cumulateduptime_raw>
+                            <cumulatedsince_raw>0</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9316">
+                            <name>System Health Temperatures</name>
+                            <id>9316</id>
+                            <url>/sensor.htm?id=9316</url>
+                            <tags>snmpciscosystemhealthsensor systemhealth ciscotemperature</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP Cisco System Health</sensortype>
+                            <sensorkind>SNMPCiscoSystemHealth</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>0</statussince_raw_utc>
+                            <lasttime_raw_utc>0</lasttime_raw_utc>
+                            <lastok_raw_utc>0</lastok_raw_utc>
+                            <lasterror_raw_utc>0</lasterror_raw_utc>
+                            <lastup_raw_utc>0</lastup_raw_utc>
+                            <lastdown_raw_utc>0</lastdown_raw_utc>
+                            <cumulateddowntime_raw>0</cumulateddowntime_raw>
+                            <cumulateduptime_raw>0</cumulateduptime_raw>
+                            <cumulatedsince_raw>0</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9320">
+                            <name>System Health Voltages</name>
+                            <id>9320</id>
+                            <url>/sensor.htm?id=9320</url>
+                            <tags>snmpciscosystemhealthsensor systemhealth ciscovoltage</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP Cisco System Health</sensortype>
+                            <sensorkind>SNMPCiscoSystemHealth</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4449282176</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4449282176</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3569417014</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4449282176</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3569417014</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4449282176</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553363.38300079</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42792510.0050207</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3788637847</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                    </device>
+                    <device id="9321">
+                        <summary>0,0,0,0,0,0,26,0</summary>
+                        <name>HP Procurve 24</name>
+                        <deviceicon>vendors_hp.png</deviceicon>
+                        <id>9321</id>
+                        <url>/device.htm?id=9321</url>
+                        <tags></tags>
+                        <priority>3</priority>
+                        <fixed>0</fixed>
+                        <hascomment>0</hascomment>
+                        <host>IrelandSmallProbeprtgpaesslercom</host>
+                        <status_raw>7</status_raw>
+                        <active>false</active>
+                        <sensor id="9322">
+                            <name>Ping</name>
+                            <id>9322</id>
+                            <url>/sensor.htm?id=9322</url>
+                            <tags>pingsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>Ping</sensortype>
+                            <sensorkind>Ping</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.444709838</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.444709838</lasttime_raw_utc>
+                            <lastok_raw_utc>42782.444709838</lastok_raw_utc>
+                            <lasterror_raw_utc>0</lasterror_raw_utc>
+                            <lastup_raw_utc>42782.444709838</lastup_raw_utc>
+                            <lastdown_raw_utc>0</lastdown_raw_utc>
+                            <cumulateddowntime_raw>0</cumulateddowntime_raw>
+                            <cumulateduptime_raw>48345427.0650567</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3813060764</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9323">
+                            <name>System Uptime</name>
+                            <id>9323</id>
+                            <url>/sensor.htm?id=9323</url>
+                            <tags>snmpuptimesensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>0</hascomment>
+                            <sensortype>SNMP System Uptime</sensortype>
+                            <sensorkind>SNMPUptime</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4452290509</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4452290509</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3567217824</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4452290509</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3567217824</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4452290509</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553684.89300127</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42792869.2450367</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3818137847</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9324">
+                            <name>(001) Alias 1</name>
+                            <id>9324</id>
+                            <url>/sensor.htm?id=9324</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4448124769</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4448124769</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3569996181</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4448124769</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3569996181</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4448124769</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553483.26700025</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789308.509018</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829051042</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9335">
+                            <name>(002) Alias 2</name>
+                            <id>9335</id>
+                            <url>/sensor.htm?id=9335</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4453798843</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4453798843</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3568722454</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4453798843</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3568722454</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4446852431</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553543.31800034</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789678.7220412</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829131944</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9341">
+                            <name>(003) Alias 3</name>
+                            <id>9341</id>
+                            <url>/sensor.htm?id=9341</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4453102546</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4453102546</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3568028356</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4453102546</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3568028356</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.444615787</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553603.3300007</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42790164.6310286</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.382913287</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9342">
+                            <name>(004) Alias 4</name>
+                            <id>9342</id>
+                            <url>/sensor.htm?id=9342</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4452986806</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4452986806</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3567912731</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4452986806</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3567912731</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4452986806</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553723.49700066</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42790285.5230274</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.382913287</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9343">
+                            <name>(005) Alias 5</name>
+                            <id>9343</id>
+                            <url>/sensor.htm?id=9343</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4452871065</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4452871065</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3567796528</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4452871065</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3567796528</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4452871065</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553723.372999</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42790346.5900416</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.382913287</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9344">
+                            <name>(006) Alias 6</name>
+                            <id>9344</id>
+                            <url>/sensor.htm?id=9344</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4452753472</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4452753472</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3567680787</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4452753472</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3567680787</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4452753472</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553723.35400016</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42790590.6580496</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.382913287</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9345">
+                            <name>(007) Alias 7</name>
+                            <id>9345</id>
+                            <url>/sensor.htm?id=9345</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4452637847</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4452637847</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3567565046</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4452637847</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3567565046</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4452637847</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553790.33799926</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42790651.778032</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.382913287</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9346">
+                            <name>(008) Alias 8</name>
+                            <id>9346</id>
+                            <url>/sensor.htm?id=9346</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4452523264</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4452523264</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3567449653</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4452523264</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3567449653</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4452523264</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553790.0850001</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42790712.8920416</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.382913287</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9347">
+                            <name>(009) Alias 9</name>
+                            <id>9347</id>
+                            <url>/sensor.htm?id=9347</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.445240625</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.445240625</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3567333565</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.445240625</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3567333565</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.445240625</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553730.38500079</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42790773.6030227</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.382913287</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9325">
+                            <name>(010) Alias 10</name>
+                            <id>9325</id>
+                            <url>/sensor.htm?id=9325</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4448012616</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4448012616</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3569879977</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4448012616</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3569879977</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4448012616</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553483.3600004</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789309.195037</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829051042</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9326">
+                            <name>(011) Alias 11</name>
+                            <id>9326</id>
+                            <url>/sensor.htm?id=9326</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4447895139</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4447895139</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.356976412</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4447895139</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.356976412</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4447895139</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553483.32400054</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789610.721031</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829131944</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9327">
+                            <name>(012) Alias 12</name>
+                            <id>9327</id>
+                            <url>/sensor.htm?id=9327</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4454721065</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4454721065</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3569648958</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4454721065</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3569648958</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4447777662</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553483.62499971</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789378.4850073</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829131944</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9328">
+                            <name>(013) Alias 13</name>
+                            <id>9328</id>
+                            <url>/sensor.htm?id=9328</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.445460544</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.445460544</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3569532639</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.445460544</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3569532639</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4447661806</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553483.24999986</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789371.7410353</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829131944</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9329">
+                            <name>(014) Alias 14</name>
+                            <id>9329</id>
+                            <url>/sensor.htm?id=9329</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4454489699</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4454489699</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3569416898</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4454489699</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3569416898</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4447547917</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553483.29200074</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789372.7960478</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829131944</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9330">
+                            <name>(015) Alias 15</name>
+                            <id>9330</id>
+                            <url>/sensor.htm?id=9330</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4454373843</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4454373843</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3569301273</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4454373843</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3569301273</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.444743287</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553483.22699971</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789493.9030159</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829131944</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9331">
+                            <name>(016) Alias 16</name>
+                            <id>9331</id>
+                            <url>/sensor.htm?id=9331</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4454259954</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4454259954</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3569187269</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4454259954</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3569187269</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4447315278</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553483.36200074</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789614.6430337</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829131944</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9332">
+                            <name>(017) Alias 17</name>
+                            <id>9332</id>
+                            <url>/sensor.htm?id=9332</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4454144213</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4454144213</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.356907037</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4454144213</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.356907037</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4447201389</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553483.51000021</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789615.7750114</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829131944</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9333">
+                            <name>(018) Alias 18</name>
+                            <id>9333</id>
+                            <url>/sensor.htm?id=9333</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4454028472</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4454028472</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3568954051</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4454028472</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3568954051</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4447085648</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553483.32000049</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789858.6390124</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829131944</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9334">
+                            <name>(019) Alias 19</name>
+                            <id>9334</id>
+                            <url>/sensor.htm?id=9334</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4453912731</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4453912731</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.356883831</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4453912731</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.356883831</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4446968056</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553543.38200057</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789617.6600406</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829131944</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9336">
+                            <name>(020) Alias 20</name>
+                            <id>9336</id>
+                            <url>/sensor.htm?id=9336</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4453679514</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4453679514</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3568607176</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4453679514</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3568607176</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4446738426</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553543.55200003</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789984.4780097</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829131944</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9337">
+                            <name>(021) Alias 21</name>
+                            <id>9337</id>
+                            <url>/sensor.htm?id=9337</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4453563657</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4453563657</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3568491435</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4453563657</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3568491435</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4446620833</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553543.42499911</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789986.5360185</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829131944</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9338">
+                            <name>(022) Alias 22</name>
+                            <id>9338</id>
+                            <url>/sensor.htm?id=9338</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4453447917</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4453447917</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3568375231</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4453447917</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3568375231</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4446505093</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553543.39099897</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789981.5550358</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.3829131944</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9339">
+                            <name>(023) Alias 23</name>
+                            <id>9339</id>
+                            <url>/sensor.htm?id=9339</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4453332176</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4453332176</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.3568259954</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4453332176</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.3568259954</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4446391204</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553603.45600082</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42789982.597029</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.382913287</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                        <sensor id="9340">
+                            <name>(024) Alias 24</name>
+                            <id>9340</id>
+                            <url>/sensor.htm?id=9340</url>
+                            <tags>bandwidthsensor snmptrafficsensor</tags>
+                            <priority>3</priority>
+                            <fixed>0</fixed>
+                            <hascomment>1</hascomment>
+                            <sensortype>SNMP Traffic</sensortype>
+                            <sensorkind>SNMPTraffic</sensorkind>
+                            <interval>60</interval>
+                            <status_raw>7</status_raw>
+                            <status>Paused</status>
+                            <datamode>0</datamode>
+                            <lastvalue>-</lastvalue>
+                            <lastvalue_raw></lastvalue_raw>
+                            <statusmessage>Paused by parent</statusmessage>
+                            <statussince_raw_utc>42782.4453218287</statussince_raw_utc>
+                            <lasttime_raw_utc>42782.4453218287</lasttime_raw_utc>
+                            <lastok_raw_utc>42718.356814375</lastok_raw_utc>
+                            <lasterror_raw_utc>42782.4453218287</lasterror_raw_utc>
+                            <lastup_raw_utc>42718.356814375</lastup_raw_utc>
+                            <lastdown_raw_utc>42782.4446275463</lastdown_raw_utc>
+                            <cumulateddowntime_raw>5553603.25300014</cumulateddowntime_raw>
+                            <cumulateduptime_raw>42790043.8400368</cumulateduptime_raw>
+                            <cumulatedsince_raw>42222.382913287</cumulatedsince_raw>
+                            <active>true</active>
+                        </sensor>
+                    </device>
+                </group>
+            </group>
+        </nodes>
+    </sensortree>
+</prtg>
