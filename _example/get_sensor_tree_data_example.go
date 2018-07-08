@@ -21,7 +21,7 @@ func printChild(i interface{}, level int) {
 			printChild(probe, level+1)
 		}
 		for _, device := range groupInstance.Devices {
-			fmt.Printf("%v%vDevice: %v (%v)\n", "|", strings.Repeat("--", level), device.DeviceName, device.DeviceId)
+			fmt.Printf("%v%vDevice: %v (%v)(IpAddr: %v)\n", "|", strings.Repeat("--", level), device.DeviceName, device.DeviceId, device.DeviceHost)
 			printChild(device, level+1)
 		}
 		for _, sensor := range groupInstance.Sensors {

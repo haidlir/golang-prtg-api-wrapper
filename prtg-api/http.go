@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+    "strings"
 	"time"
 )
 
@@ -57,10 +58,12 @@ func getPrtgResponse(url string, timeout int64, v interface{}) error {
 
 	// Unmarshal XML
 	if isContentXML(*header) {
-		err = xml.Unmarshal(body, &v)
-		if err != nil {
-			return fmt.Errorf("Unable to unmarshal xml response: %v", err)
-		}
+        decoder := xml.NewDecoder(strings.NewReader(string(body)))
+        decoder.Strict = false
+        err = decoder.Decode(&v)
+        if err != nil {
+         return fmt.Errorf("Unable to unmarshal xml response: %v", err)
+        }
 		return nil
 	}
 	// Unmarshal JSON for default
