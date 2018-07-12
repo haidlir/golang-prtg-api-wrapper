@@ -1,6 +1,8 @@
 # Usage: script/cover
 
 set -e
-go test ./prtg-api -covermode=count -coverprofile=cover.out
+go test ./prtg-api/... -covermode=count -coverprofile=cover.out
+go test ./prtg-api/... -json > test-report.out
+go test ./prtg-api/... -coverprofile=coverage.out
 go tool cover -func=cover.out
 $HOME/gopath/bin/goveralls -coverprofile=cover.out -service=travis-ci

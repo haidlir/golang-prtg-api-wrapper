@@ -1,5 +1,9 @@
 language: go
 go:
 - "1.10"
-script: scripts/cibuild
+script:
+  - scripts/cibuild
+  - scripts/sonarcloud-scanner.sh
 sudo: false
+addons:
+  sonarcloud:

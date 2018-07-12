@@ -65,7 +65,6 @@ func printChild(i interface{}, level int) {
 	default:
 		fmt.Printf("%T\n", v)
 	}
-
 }
 
 func main() {
