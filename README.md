@@ -29,8 +29,10 @@ func main() {
 	server := "https://prtg.paessler.com"
 	username := "demo"
 	password := "demodemo"
+	// or
+	passwordHash := "passhash"
 
-	client := prtg.NewClient(server, username, password)
+	client := prtg.NewClient(server, username, password, passwordHash)
 	prtgVersion, err := client.GetPrtgVersion()
 	if err != nil {
 		log.Println(err)
