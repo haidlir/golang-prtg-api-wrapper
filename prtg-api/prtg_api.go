@@ -60,12 +60,24 @@ const (
 // server := "http://localhost"
 // username := "user"
 // password := "pass"
-// passwordHash := "000000000"
-func NewClient(server, username, password, passwordHash string) *Client {
+func NewClient(server, username, password string) *Client {
 	instance := new(Client)
 	instance.Server = server
 	instance.Username = username
 	instance.Password = password
+	instance.Timeout = 10000
+	return instance
+}
+
+// NewClientWithHashedPass takes server, username, passwordHash and returns client's instance.
+// input format:
+// server := "http://localhost"
+// username := "user"
+// passwordHash := "000000000"
+func NewClientWithHashedPass(server, username, passwordHash string) *Client {
+	instance := new(Client)
+	instance.Server = server
+	instance.Username = username
 	instance.PasswordHash = passwordHash
 	instance.Timeout = 10000
 	return instance

@@ -16,17 +16,35 @@ func TestNewClient(t *testing.T) {
 	server := "http://localhost"
 	username := "user"
 	password := "pass"
-	passwordHash := "passhash"
 
 	// Trying to create new client
-	client := NewClient(server, username, password, passwordHash)
+	client := NewClient(server, username, password)
 	if client == nil {
 		t.Error("A new connection object must have been made")
 	}
 
 	// Trying to change the server
 	server = "http://127.0.0.1"
-	client = NewClient(server, username, password, passwordHash)
+	client = NewClient(server, username, password)
+	if client.Server != "http://127.0.0.1" {
+		t.Errorf("Server is %v instead of http://127.0.0.1", client.Server)
+	}
+}
+
+func TestNewClientWithHashedPass(t *testing.T) {
+	server := "http://localhost"
+	username := "user"
+	passwordHash := "passhash"
+
+	// Trying to create new client
+	client := NewClientWithHashedPass(server, username, passwordHash)
+	if client == nil {
+		t.Error("A new connection object must have been made")
+	}
+
+	// Trying to change the server
+	server = "http://127.0.0.1"
+	client = NewClientWithHashedPass(server, username, passwordHash)
 	if client.Server != "http://127.0.0.1" {
 		t.Errorf("Server is %v instead of http://127.0.0.1", client.Server)
 	}
@@ -36,8 +54,7 @@ func TestSetContextTimeout(t *testing.T) {
 	server := "http://localhost"
 	username := "user"
 	password := "pass"
-	passwordHash := "passhash"
-	client := NewClient(server, username, password, passwordHash)
+	client := NewClient(server, username, password)
 
 	// Check whether client contains default context timeout or not.
 	if client.Timeout != 10000 {
@@ -73,7 +90,7 @@ func TestGetCompleteUrl(t *testing.T) {
 	servers := []string{" http://localhost", "localhost"}
 
 	for _, server := range servers {
-		client := NewClient(server, "", "", "")
+		client := NewClient(server, "", "")
 
 		_, err := client.GetPrtgVersion()
 		if err == nil {
@@ -129,8 +146,7 @@ func TestGetPrtgVersion(t *testing.T) {
 	server := fmt.Sprintf("%v", serverURL)
 	username := "user"
 	password := "pass"
-	passwordHash := "passhash"
-	client := NewClient(server, username, password, passwordHash)
+	client := NewClient(server, username, password)
 	prtgVersion, err := client.GetPrtgVersion()
 	if err != nil {
 		t.Errorf("Unable to get PRTG Version: %v", err)
@@ -163,9 +179,8 @@ func TestGetSensorDetail(t *testing.T) {
 	server := fmt.Sprintf("%v", serverURL)
 	username := "user"
 	password := "pass"
-	passwordHash := "passhash"
 	var sensorId int64
-	client := NewClient(server, username, password, passwordHash)
+	client := NewClient(server, username, password)
 
 	// for sensor id 9182
 	sensorId = 9182
@@ -220,12 +235,11 @@ func TestHistData(t *testing.T) {
 	server := fmt.Sprintf("%v", serverURL)
 	username := "user"
 	password := "pass"
-	passwordHash := "passhash"
 	var sensorId int64
 	var average int64
 	sDate := time.Date(2018, time.May, 1, 0, 0, 0, 0, time.UTC)
 	eDate := time.Date(2018, time.June, 1, 0, 0, 0, 0, time.UTC)
-	client := NewClient(server, username, password, passwordHash)
+	client := NewClient(server, username, password)
 
 	// for sensor id 14254
 	sensorId = 14254
@@ -298,10 +312,9 @@ func TestGetSensorList(t *testing.T) {
 	server := fmt.Sprintf("%v", serverURL)
 	username := "user"
 	password := "pass"
-	passwordHash := "passhash"
 	var sensorId int64
 	var columns []string
-	client := NewClient(server, username, password, passwordHash)
+	client := NewClient(server, username, password)
 
 	// Check sensor list within id 9301
 	sensorId = 9301
@@ -371,10 +384,9 @@ func TestGetDeviceList(t *testing.T) {
 	server := fmt.Sprintf("%v", serverURL)
 	username := "user"
 	password := "pass"
-	passwordHash := "passhash"
 	var sensorId int64
 	var columns []string
-	client := NewClient(server, username, password, passwordHash)
+	client := NewClient(server, username, password)
 
 	// Check sensor list within id 9301
 	sensorId = 9217
@@ -446,10 +458,9 @@ func TestGetGroupList(t *testing.T) {
 	server := fmt.Sprintf("%v", serverURL)
 	username := "user"
 	password := "pass"
-	passwordHash := "passhash"
 	var sensorId int64
 	var columns []string
-	client := NewClient(server, username, password, passwordHash)
+	client := NewClient(server, username, password)
 
 	// Check sensor list within id 9301
 	sensorId = 0
@@ -535,9 +546,8 @@ func TestGetSensorTree(t *testing.T) {
 	server := fmt.Sprintf("%v", serverURL)
 	username := "user"
 	password := "pass"
-	passwordHash := "passhash"
 	var sensorId int64
-	client := NewClient(server, username, password, passwordHash)
+	client := NewClient(server, username, password)
 
 	// Check sensortree from root (sensorId = 0)
 	{
