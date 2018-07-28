@@ -19,6 +19,9 @@ type Client struct {
 	// Any account's password of PRTG (mandatory)
 	Password string
 
+	// Any account's password hash of PRTG
+	PasswordHash string
+
 	// Timeout Context in millisecond
 	Timeout int64
 }
@@ -66,6 +69,20 @@ func NewClient(server, username, password string) *Client {
 	return instance
 }
 
+// NewClientWithHashedPass takes server, username, passwordHash and returns client's instance.
+// input format:
+// server := "http://localhost"
+// username := "user"
+// passwordHash := "000000000"
+func NewClientWithHashedPass(server, username, passwordHash string) *Client {
+	instance := new(Client)
+	instance.Server = server
+	instance.Username = username
+	instance.PasswordHash = passwordHash
+	instance.Timeout = 10000
+	return instance
+}
+
 // SetContextTimeout configures the client timeout value in millisecond format.
 func (c *Client) SetContextTimeout(timeout int64) {
 	if (timeout <= 0) || (timeout > 30000) {
@@ -78,7 +95,12 @@ func (c *Client) SetContextTimeout(timeout int64) {
 func (c *Client) getTemplateUrlQuery() *url.Values {
 	q := url.Values{}
 	q.Set("username", c.Username)
-	q.Set("password", c.Password)
+	if c.Password != "" {
+		q.Set("password", c.Password)
+	}
+	if c.PasswordHash != "" {
+		q.Set("passhash", c.PasswordHash)
+	}
 	return &q
 }
 

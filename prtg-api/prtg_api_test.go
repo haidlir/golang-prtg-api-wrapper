@@ -31,6 +31,25 @@ func TestNewClient(t *testing.T) {
 	}
 }
 
+func TestNewClientWithHashedPass(t *testing.T) {
+	server := "http://localhost"
+	username := "user"
+	passwordHash := "passhash"
+
+	// Trying to create new client
+	client := NewClientWithHashedPass(server, username, passwordHash)
+	if client == nil {
+		t.Error("A new connection object must have been made")
+	}
+
+	// Trying to change the server
+	server = "http://127.0.0.1"
+	client = NewClientWithHashedPass(server, username, passwordHash)
+	if client.Server != "http://127.0.0.1" {
+		t.Errorf("Server is %v instead of http://127.0.0.1", client.Server)
+	}
+}
+
 func TestSetContextTimeout(t *testing.T) {
 	server := "http://localhost"
 	username := "user"
@@ -128,6 +147,31 @@ func TestGetPrtgVersion(t *testing.T) {
 	username := "user"
 	password := "pass"
 	client := NewClient(server, username, password)
+	prtgVersion, err := client.GetPrtgVersion()
+	if err != nil {
+		t.Errorf("Unable to get PRTG Version: %v", err)
+		return
+	}
+	if prtgVersion != "18.2.41.1636" {
+		t.Errorf("PRTG Version is %v instead of 18.2.41.1636", prtgVersion)
+	}
+}
+
+func TestGetPrtgVersionWithHashedPass(t *testing.T) {
+	mux := new(http.ServeMux)
+	mux.HandleFunc(GetSensorDetailsEndpoint, func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprint(w, loadfixture("/prtg_version.json"))
+	})
+	httpServer := setup(mux)
+	defer httpServer.Close()
+	serverURL, _ := url.Parse(httpServer.URL)
+
+	server := fmt.Sprintf("%v", serverURL)
+	username := "user"
+	passwordHash := "pass"
+	client := NewClientWithHashedPass(server, username, passwordHash)
 	prtgVersion, err := client.GetPrtgVersion()
 	if err != nil {
 		t.Errorf("Unable to get PRTG Version: %v", err)
