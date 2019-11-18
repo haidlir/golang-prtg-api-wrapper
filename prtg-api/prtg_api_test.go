@@ -62,9 +62,9 @@ func TestSetContextTimeout(t *testing.T) {
 	}
 
 	// Trying to change the client context timeout more than or equals 30000
-	client.SetContextTimeout(30001)
-	if client.Timeout != 10000 {
-		t.Errorf("client's context timeout is %vms instead of 10s", client.Timeout)
+	client.SetContextTimeout(40000)
+	if client.Timeout != 40000 {
+		t.Errorf("client's context timeout is %vms instead of 40s", client.Timeout)
 	}
 	// Trying to change the client context timeout less than or equals to 30000
 	client.SetContextTimeout(-1)
