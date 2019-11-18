@@ -85,7 +85,7 @@ func NewClientWithHashedPass(server, username, passwordHash string) *Client {
 
 // SetContextTimeout configures the client timeout value in millisecond format.
 func (c *Client) SetContextTimeout(timeout int64) {
-	if (timeout <= 0) || (timeout > 30000) {
+	if timeout <= 0 {
 		c.Timeout = defaultTimeout
 	} else {
 		c.Timeout = timeout
