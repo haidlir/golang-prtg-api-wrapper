@@ -1,71 +1,96 @@
 package prtg
 
 type prtgSensorDetailsResponse struct {
-	PrtgVersion string         `json:"prtgversion"`
+	PrtgVersion string         `json:"prtgversion" xml:"prtg-version"`
 	SensorData  PrtgSensorData `json:"sensordata"`
+}
+
+type prtgSensorDetailsResponseXML struct {
+	PrtgVersion string `xml:"prtg-version"`
+	PrtgSensorData
 }
 
 // PrtgSensorData contains property for each sensor, device, and group object within detail API.
 type PrtgSensorData struct {
-	Name             string `json:"name"`
-	SensorType       string `json:"sensortype"`
-	Interval         string `json:"interval"`
-	ProbeName        string `json:"probename"`
-	ParentGroupName  string `json:"parentgroupname"`
-	ParentDeviceName string `json:"parentdevicename"`
-	ParentDeviceId   string `json:"parentdeviceid"`
-	LastValue        string `json:"lastvalue"`
-	LastMessage      string `json:"lastmessage"`
-	Favorite         string `json:"favorite"`
-	StatusText       string `json:"statustext"`
-	StatusId         string `json:"statusid"`
-	LastUp           string `json:"lastup"`
-	LastDown         string `json:"lastdown"`
-	LastCheck        string `json:"lastcheck"`
-	Uptime           string `json:"uptime"`
-	UptimeTime       string `json:"uptimetime"`
-	Downtime         string `json:"downtime"`
-	DowntimeTime     string `json:"downtimetime"`
-	UpDownTotal      string `json:"updowntotal"`
-	UpDownSince      string `json:"updownsince"`
-	Info             string `json:"info"`
+	Name             string `json:"name" xml:"name"`
+	SensorType       string `json:"sensortype" xml:"sensortype"`
+	Interval         string `json:"interval" xml:"interval"`
+	ProbeName        string `json:"probename" xml:"probename"`
+	ParentGroupName  string `json:"parentgroupname" xml:"parentgroupname"`
+	ParentDeviceName string `json:"parentdevicename" xml:"parentdevicename"`
+	ParentDeviceId   string `json:"parentdeviceid" xml:"parentdeviceid"`
+	LastValue        string `json:"lastvalue" xml:"lastvalue"`
+	LastMessage      string `json:"lastmessage" xml:"lastmessage"`
+	Favorite         string `json:"favorite" xml:"favorite"`
+	StatusText       string `json:"statustext" xml:"statustext"`
+	StatusId         string `json:"statusid" xml:"statusid"`
+	LastUp           string `json:"lastup" xml:"lastup"`
+	LastDown         string `json:"lastdown" xml:"lastdown"`
+	LastCheck        string `json:"lastcheck" xml:"lastcheck"`
+	Uptime           string `json:"uptime" xml:"uptime"`
+	UptimeTime       string `json:"uptimetime" xml:"uptimetime"`
+	Downtime         string `json:"downtime" xml:"downtime"`
+	DowntimeTime     string `json:"downtimetime" xml:"downtimetime"`
+	UpDownTotal      string `json:"updowntotal" xml:"updowntotal"`
+	UpDownSince      string `json:"updownsince" xml:"updownsince"`
+	Info             string `json:"info" xml:"info"`
 }
 
 type prtgTableListResponse struct {
-	PrtgVersion string          `json:"prtg-version"`
-	TreeSize    int64           `json:"treesize"`
-	Groups      []PrtgTableList `json:"groups,omitempty"`
-	Devices     []PrtgTableList `json:"devices,omitempty"`
-	Sensors     []PrtgTableList `json:"sensors,omitempty"`
+	PrtgVersion string          `json:"prtgversion" xml:"prtg-version"`
+	TreeSize    int64           `json:"treesize" xml:"treesize"`
+	Groups      []PrtgTableList `json:"groups, xml:"groups,omitempty"`
+	Devices     []PrtgTableList `json:"devices, xml:"devices,omitempty"`
+	Sensors     []PrtgTableList `json:"sensors, xml:"sensors,omitempty"`
 }
 
 // PrtgTableList contains property for each sensor, device, and group object within list API.
 type PrtgTableList struct {
-	ObjectId           int64  `json:"objid"`
-	Probe              string `json:"probe"`
-	Group              string `json:"group"`
-	Name               string `json:"name"`
-	Device             string `json:"device"`
-	Host               string `json:"host"`
-	Sensor             string `json:"sensor"`
-	DownSensors        int64  `json:"downsens_raw"`
-	PartialDownSensors int64  `json:"partialdownsens_raw"`
-	DownAckSensors     int64  `json:"downacksens_raw"`
-	UpSensors          int64  `json:"upsens_raw"`
-	WarningSensors     int64  `json:"warnsens_raw"`
-	PausedSensors      int64  `json:"pausedsens_raw"`
-	UnusualSensors     int64  `json:"unusualsens_raw"`
-	UndefinedSensors   int64  `json:"undefinedsens_raw"`
+	ObjectId           int64  `json:"objid" xml:"objid"`
+	Probe              string `json:"probe" xml:"probe"`
+	Group              string `json:"group" xml:"group"`
+	Name               string `json:"name" xml:"name"`
+	Device             string `json:"device" xml:"device"`
+	Host               string `json:"host" xml:"host"`
+	Sensor             string `json:"sensor" xml:"sensor"`
+	DownSensors        int64  `json:"downsens_raw" xml:"downsens_raw"`
+	PartialDownSensors int64  `json:"partialdownsens_raw" xml:"partialdownsens_raw"`
+	DownAckSensors     int64  `json:"downacksens_raw" xml:"downacksens_raw"`
+	UpSensors          int64  `json:"upsens_raw" xml:"upsens_raw"`
+	WarningSensors     int64  `json:"warnsens_raw" xml:"warnsens_raw"`
+	PausedSensors      int64  `json:"pausedsens_raw" xml:"pausedsens_raw"`
+	UnusualSensors     int64  `json:"unusualsens_raw" xml:"unusualsens_raw"`
+	UndefinedSensors   int64  `json:"undefinedsens_raw" xml:"undefinedsens_raw"`
 }
 
 type prtgHistoricDataResponse struct {
-	PrtgVersion  string             `json:"prtg-version"`
-	TreeSize     int64              `json:"treesize"`
-	HistoricData []PrtgHistoricData `json:"histdata"`
+	PrtgVersion  string             `json:"prtgversion" xml:"prtg-version"`
+	TreeSize     int64              `json:"treesize" xml:"treesize"`
+	HistoricData []PrtgHistoricData `json:"histdata" xml:"histdata"`
 }
 
 // PrtgHistoricData contains historic data param and value for each series.
 type PrtgHistoricData map[string]interface{}
+
+type prtgHistoricDataResponseXML struct {
+	PrtgVersion  string       `json:"prtgversion" xml:"prtg-version"`
+	HistoricData []ItemTagXML `json:"histdata" xml:"item"`
+}
+
+// ItemTagXML contains the tag informations
+type ItemTagXML struct {
+	Datetime    string     `xml:"datetime"`
+	DatetimeRAW string     `xml:"datetime_raw"`
+	Coverage    string     `xml:"coverage"`
+	CoverageRAW string     `xml:"coverage_raw"`
+	Value       []ValueXML `xml:"value"XML`
+	ValueRAW    []ValueXML `xml:"value_raw"`
+}
+
+type ValueXML struct {
+	Key   string `xml:"channel,attr"`
+	Value string `xml:",chardata"`
+}
 
 // PrtgSensorTreeResponse contains parsed xml format of sensor tree API response.
 type PrtgSensorTreeResponse struct {

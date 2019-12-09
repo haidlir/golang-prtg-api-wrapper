@@ -8,13 +8,13 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-    "strings"
+	"strings"
 	"time"
 )
 
 func isContentXML(header http.Header) bool {
-	contentDisposition := header.Get("Content-Disposition")
-	return contentDisposition == "attachment; filename=table.xml"
+	contentDisposition := header.Get("Content-Type")
+	return contentDisposition == "text/xml; charset=UTF-8" || contentDisposition == "text/html; charset=UTF-8"
 }
 
 func getHTTPBody(url string, timeout int64) ([]byte, *http.Header, error) {
@@ -55,15 +55,16 @@ func getPrtgResponse(url string, timeout int64, v interface{}) error {
 	if err != nil {
 		return err
 	}
-
 	// Unmarshal XML
 	if isContentXML(*header) {
-        decoder := xml.NewDecoder(strings.NewReader(string(body)))
-        decoder.Strict = false
-        err = decoder.Decode(&v)
-        if err != nil {
-         return fmt.Errorf("Unable to unmarshal xml response: %v", err)
-        }
+		// remove CDATA indentiation
+		modData := string(body)
+		decoder := xml.NewDecoder(strings.NewReader(modData))
+		decoder.Strict = false
+		err = decoder.Decode(&v)
+		if err != nil {
+			return fmt.Errorf("Unable to unmarshal xml response: %v", err)
+		}
 		return nil
 	}
 	// Unmarshal JSON for default

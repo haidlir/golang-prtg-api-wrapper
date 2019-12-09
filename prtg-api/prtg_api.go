@@ -45,10 +45,14 @@ var (
 const (
 	// GetSensorDetailsEndpoint contains path to sensor detail API endpoint
 	GetSensorDetailsEndpoint = "/api/getsensordetails.json"
+	// GetSensorDetailsEndpointXML contains path to sensor detail API endpoint in XML format
+	GetSensorDetailsEndpointXML = "/api/getsensordetails.xml"
 	// GetTableListsEndpoint contains path to table list API endpoint for listing groups, devices, and sensors.
 	GetTableListsEndpoint = "/api/table.json"
 	// GetHistoricDatasEndpoint contains path to historic data API endpoint
 	GetHistoricDatasEndpoint = "/api/historicdata.json"
+	// GetHistoricDatasEndpointXML contains path to historic data API endpoint in XML format
+	GetHistoricDatasEndpointXML = "/api/historicdata.xml"
 	// GetSensorTreesEndpoint contains path to serson tree API endpoint
 	GetSensorTreesEndpoint = "/api/table.xml"
 	// Some Private constant.
@@ -131,15 +135,68 @@ func (c *Client) getSensorDetail(q *url.Values) (*prtgSensorDetailsResponse, err
 	return &sensorDetailResp, nil
 }
 
+func (c *Client) getSensorDetailXML(q *url.Values) (*prtgSensorDetailsResponse, error) {
+	p := GetSensorDetailsEndpointXML
+
+	// Complete URL
+	u, err := c.getCompleteUrl(p, q)
+	if err != nil {
+		return nil, err
+	}
+
+	var sensorDetailRespXML prtgSensorDetailsResponseXML
+	err = getPrtgResponse(u, c.Timeout, &sensorDetailRespXML)
+	if err != nil {
+		return nil, err
+	}
+	sensorDetailRespXML.Name = trimWeirdCharacter(sensorDetailRespXML.Name)
+	sensorDetailRespXML.SensorType = trimWeirdCharacter(sensorDetailRespXML.SensorType)
+	sensorDetailRespXML.Interval = trimWeirdCharacter(sensorDetailRespXML.Interval)
+	sensorDetailRespXML.ProbeName = trimWeirdCharacter(sensorDetailRespXML.ProbeName)
+	sensorDetailRespXML.ParentGroupName = trimWeirdCharacter(sensorDetailRespXML.ParentGroupName)
+	sensorDetailRespXML.ParentDeviceName = trimWeirdCharacter(sensorDetailRespXML.ParentDeviceName)
+	sensorDetailRespXML.ParentDeviceId = trimWeirdCharacter(sensorDetailRespXML.ParentDeviceId)
+	sensorDetailRespXML.LastValue = trimWeirdCharacter(sensorDetailRespXML.LastValue)
+	sensorDetailRespXML.LastMessage = trimWeirdCharacter(sensorDetailRespXML.LastMessage)
+	sensorDetailRespXML.Favorite = trimWeirdCharacter(sensorDetailRespXML.Favorite)
+	sensorDetailRespXML.StatusText = trimWeirdCharacter(sensorDetailRespXML.StatusText)
+	sensorDetailRespXML.StatusId = trimWeirdCharacter(sensorDetailRespXML.StatusId)
+	sensorDetailRespXML.LastUp = trimWeirdCharacter(sensorDetailRespXML.LastUp)
+	sensorDetailRespXML.LastDown = trimWeirdCharacter(sensorDetailRespXML.LastDown)
+	sensorDetailRespXML.LastCheck = trimWeirdCharacter(sensorDetailRespXML.LastCheck)
+	sensorDetailRespXML.Uptime = trimWeirdCharacter(sensorDetailRespXML.Uptime)
+	sensorDetailRespXML.UptimeTime = trimWeirdCharacter(sensorDetailRespXML.UptimeTime)
+	sensorDetailRespXML.Downtime = trimWeirdCharacter(sensorDetailRespXML.Downtime)
+	sensorDetailRespXML.DowntimeTime = trimWeirdCharacter(sensorDetailRespXML.DowntimeTime)
+	sensorDetailRespXML.UpDownTotal = trimWeirdCharacter(sensorDetailRespXML.UpDownTotal)
+	sensorDetailRespXML.UpDownSince = trimWeirdCharacter(sensorDetailRespXML.UpDownSince)
+	sensorDetailRespXML.Info = trimWeirdCharacter(sensorDetailRespXML.Info)
+	sensorDetailResp := prtgSensorDetailsResponse{
+		PrtgVersion: sensorDetailRespXML.PrtgVersion,
+		SensorData:  sensorDetailRespXML.PrtgSensorData,
+	}
+	return &sensorDetailResp, nil
+}
+
+func trimWeirdCharacter(str string) string {
+	str = strings.Trim(str, "\t\n ")
+	return str
+}
+
 // GetPrtgVersion returns PRTG's version of the specified server.
 func (c *Client) GetPrtgVersion() (string, error) {
 	// Set the query
 	q := c.getTemplateUrlQuery()
 	q.Set("id", "0")
 
+	var sensorDetailResp *prtgSensorDetailsResponse
 	sensorDetailResp, err := c.getSensorDetail(q)
 	if err != nil {
-		return "", err
+		// Try XML
+		sensorDetailResp, err = c.getSensorDetailXML(q)
+		if err != nil {
+			return "", err
+		}
 	}
 	return sensorDetailResp.PrtgVersion, nil
 }
@@ -150,7 +207,22 @@ func (c *Client) GetSensorDetail(id int64) (*PrtgSensorData, error) {
 	q := c.getTemplateUrlQuery()
 	q.Set("id", fmt.Sprintf("%v", id))
 
+	// Try JSON
 	sensorDetailResp, err := c.getSensorDetail(q)
+	if err != nil {
+		// Try XML
+		return c.GetSensorDetailXML(id)
+	}
+	return &sensorDetailResp.SensorData, nil
+}
+
+// GetSensorDetailXML returns the detail of specified sensor.
+func (c *Client) GetSensorDetailXML(id int64) (*PrtgSensorData, error) {
+	// Set the query
+	q := c.getTemplateUrlQuery()
+	q.Set("id", fmt.Sprintf("%v", id))
+
+	sensorDetailResp, err := c.getSensorDetailXML(q)
 	if err != nil {
 		return nil, err
 	}
@@ -198,12 +270,71 @@ func (c *Client) GetHistoricData(id, average int64, startDate, endDate time.Time
 	}
 
 	// Get Historic Data using PRTG's API
+	// Try JSON
 	histDataResp, err := c.getHistoricData(id, average, startDate, endDate)
 	if err != nil {
-		return nil, fmt.Errorf("Unable to get historic data: %v", err)
+		// Try XML
+		return c.GetHistoricDataXML(id, average, startDate, endDate)
 	}
 	if len(histDataResp.HistoricData) <= 0 {
 		return histDataResp.HistoricData, fmt.Errorf("No Data Found")
+	}
+
+	// Return the historic data
+	return histDataResp.HistoricData, nil
+}
+
+func (c *Client) getHistoricDataXML(id, average int64, startDate, endDate time.Time) (*prtgHistoricDataResponseXML, error) {
+	// Compose queries
+	q := c.getTemplateUrlQuery()
+	q.Set("id", fmt.Sprintf("%v", id))
+	q.Set("avg", fmt.Sprintf("%v", average))
+	q.Set("sDate", fmt.Sprintf("%v", startDate.Format(dateFormat)))
+	q.Set("eDate", fmt.Sprintf("%v", endDate.Format(dateFormat)))
+	q.Set("usecaption", fmt.Sprintf("%v", 1))
+	p := GetHistoricDatasEndpointXML
+	// Complete URL
+	u, err := c.getCompleteUrl(p, q)
+	if err != nil {
+		return nil, err
+	}
+
+	var histDataRespXML prtgHistoricDataResponseXML
+	err = getPrtgResponse(u, c.Timeout, &histDataRespXML)
+	if err != nil {
+		return nil, err
+	}
+	return &histDataRespXML, nil
+}
+
+// GetHistoricDataXML returns series of recorded data of specified sensor.
+// Take start and end of date's boundaries.
+func (c *Client) GetHistoricDataXML(id, average int64, startDate, endDate time.Time) ([]PrtgHistoricData, error) {
+	// Get Historic Data using PRTG's API
+	histDataRespXML, err := c.getHistoricDataXML(id, average, startDate, endDate)
+	if err != nil {
+		return nil, fmt.Errorf("Unable to get historic data: %v", err)
+	}
+	if len(histDataRespXML.HistoricData) <= 0 {
+		return nil, fmt.Errorf("No Data Found")
+	}
+
+	// Normalize data as map[string]interface{}
+	histData := []PrtgHistoricData{}
+	for _, data := range histDataRespXML.HistoricData {
+		tempHistData := PrtgHistoricData{}
+		tempHistData["datetime"] = data.Datetime
+		tempHistData["coverage"] = data.Coverage
+		for _, val := range data.Value {
+			tempHistData[val.Key] = val.Value
+		}
+		for _, val := range data.ValueRAW {
+			tempHistData[val.Key] = val.Value
+		}
+		histData = append(histData, tempHistData)
+	}
+	histDataResp := prtgHistoricDataResponse{
+		HistoricData: histData,
 	}
 
 	// Return the historic data

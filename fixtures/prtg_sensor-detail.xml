@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sensordata>
+        <prtg-version>13.1.2.1462</prtg-version>
+        <name>
+                <![CDATA[SNMP System Uptime]]>
+        </name>
+        <sensortype>
+                <![CDATA[snmpuptime]]>
+        </sensortype>
+        <interval>
+                <![CDATA[60]]>
+        </interval>
+        <probename>
+                <![CDATA[Local probe]]>
+        </probename>
+        <parentgroupname>
+                <![CDATA[SUMSEL]]>
+        </parentgroupname>
+        <parentdevicename>
+                <![CDATA[Kantor Desa Batumarta VI / Martamulya (103.111.199.210)]]>
+        </parentdevicename>
+        <parentdeviceid>  
+                <![CDATA[7984]]>
+        </parentdeviceid>
+        <lastvalue>
+                <![CDATA[]]>
+        </lastvalue>
+        <lastmessage>
+                <![CDATA[No response (check: firewalls, routing, snmp settings of device, IPs, SNMP version, community, passwords etc) (SNMP error # -2003)]]>
+        </lastmessage>
+        <favorite>
+                <![CDATA[]]>
+        </favorite>
+        <statustext>
+                <![CDATA[Down]]>
+        </statustext>
+        <statusid>
+                <![CDATA[5]]>
+        </statusid>
+        <lastup>
+                <![CDATA[43807.9618476852 [9 h 13 m 37 s ago]]]>
+        </lastup>
+        <lastdown>
+                <![CDATA[43808.3460424768 [23 s ago]]]>
+        </lastdown>
+        <lastcheck>
+                <![CDATA[43808.3460424768 [23 s ago]]]>
+        </lastcheck>
+        <uptime>
+                <![CDATA[76.5359%]]>
+        </uptime>
+        <uptimetime>
+                <![CDATA[281 d 17 h]]>
+        </uptimetime>
+        <downtime>
+                <![CDATA[23.4641%]]>
+        </downtime>
+        <downtimetime>
+                <![CDATA[86 d 8 h]]>
+        </downtimetime>
+        <updowntotal>
+                <![CDATA[368 d 2 h  [=100% coverage]]]>
+        </updowntotal>
+        <updownsince>
+                <![CDATA[43439.1226855208 [369 d 5 h ago]]]>
+        </updownsince>
+</sensordata>
