@@ -32,14 +32,11 @@ var (
 	dateFormat             string   = "2006-01-02-15-04-05"
 	defaultSensorListCols  []string = []string{"objid", "probe", "group", "device", "sensor", "status", "message",
 		"lastvalue", "priority", "favorite"}
-	defaultSensorListColsLen int      = len(defaultSensorListCols)
-	defaultDeviceListCols    []string = []string{"objid", "probe", "group", "device", "host", "downsens", "partialdownsens",
+	defaultDeviceListCols []string = []string{"objid", "probe", "group", "device", "host", "downsens", "partialdownsens",
 		"downacksens", "upsens", "warnsens", "pausedsens", "unusualsens",
 		"undefinedsens"}
-	defaultDeviceListColsLen int      = len(defaultDeviceListCols)
-	defaultGroupListCols     []string = []string{"objid", "probe", "group", "name", "downsens", "partialdownsens", "downacksens",
+	defaultGroupListCols []string = []string{"objid", "probe", "group", "name", "downsens", "partialdownsens", "downacksens",
 		"upsens", "warnsens", "pausedsens", "unusualsens", "undefinedsens"}
-	defaultGroupListColsLen int = len(defaultGroupListCols)
 )
 
 const (
@@ -373,7 +370,7 @@ func (c *Client) GetSensorList(id int64, columns []string) ([]PrtgTableList, err
 		return nil, fmt.Errorf("Id should be more than or equals to zero")
 	}
 	// if columns is nil, use the default column's entry instead
-	if (columns == nil) || (len(columns) > defaultSensorListColsLen) {
+	if columns == nil {
 		columns = defaultSensorListCols
 	}
 
@@ -401,7 +398,7 @@ func (c *Client) GetDeviceList(id int64, columns []string) ([]PrtgTableList, err
 		return nil, fmt.Errorf("Id should be more than or equals to zero")
 	}
 	// if columns is nil, use the default column's entry instead
-	if (columns == nil) || (len(columns) > defaultDeviceListColsLen) {
+	if columns == nil {
 		columns = defaultDeviceListCols
 	}
 
@@ -430,7 +427,7 @@ func (c *Client) GetGroupList(id int64, columns []string) ([]PrtgTableList, erro
 		return nil, fmt.Errorf("Id should be more than or equals to zero")
 	}
 	// if columns is nil, use the default column's entry instead
-	if (columns == nil) || (len(columns) > defaultGroupListColsLen) {
+	if columns == nil {
 		columns = defaultGroupListCols
 	}
 
