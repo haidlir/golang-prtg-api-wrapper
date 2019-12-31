@@ -376,6 +376,8 @@ func TestHistDataXML(t *testing.T) {
 		w.WriteHeader(http.StatusOK)
 		if sensorId == "7986" {
 			fmt.Fprint(w, loadfixture("/prtg_hist-data.xml"))
+		} else if sensorId == "9321" {
+			fmt.Fprint(w, loadfixture("/prtg_histdata_9321.xml"))
 		}
 	})
 	httpServer := setup(mux)
@@ -401,6 +403,15 @@ func TestHistDataXML(t *testing.T) {
 	}
 	if len(histData) <= 0 {
 		t.Errorf("No data within historic data")
+	}
+
+	// for sensor id 7986
+	sensorId = 9321
+	average = 0
+	histData, err = client.GetHistoricDataXML(sensorId, average, sDate, eDate)
+	if err == nil {
+		t.Errorf("Unable to get PRTG's Historic Data: %v", err)
+		return
 	}
 }
 
