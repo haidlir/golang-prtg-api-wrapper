@@ -31,7 +31,7 @@ var (
 	deltaHistoricThreshold int64    = 31 * 24 * 60 * 60 // 31 days
 	dateFormat             string   = "2006-01-02-15-04-05"
 	defaultSensorListCols  []string = []string{"objid", "probe", "group", "device", "sensor", "status", "message",
-		"lastvalue", "priority", "favorite"}
+		"lastvalue", "priority", "favorite", "type"}
 	defaultDeviceListCols []string = []string{"objid", "probe", "group", "device", "host", "downsens", "partialdownsens",
 		"downacksens", "upsens", "warnsens", "pausedsens", "unusualsens",
 		"undefinedsens"}
