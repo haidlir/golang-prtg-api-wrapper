@@ -61,6 +61,7 @@ type PrtgTableList struct {
 	PausedSensors      int64  `json:"pausedsens_raw" xml:"pausedsens_raw"`
 	UnusualSensors     int64  `json:"unusualsens_raw" xml:"unusualsens_raw"`
 	UndefinedSensors   int64  `json:"undefinedsens_raw" xml:"undefinedsens_raw"`
+	Type               string `json:"type_raw" xml:"type_raw"`
 }
 
 type prtgHistoricDataResponse struct {
